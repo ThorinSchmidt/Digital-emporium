@@ -1,0 +1,16 @@
+Backpack (Standard or Halfling) :  4   : *
+Belt Pouch                      :  1   : *
+Bit and bridle                  :  1.5 : 3
+Candles, 12                     :  1   : *
+Chalk, small bag of pieces      :  2   : *
+Cloak                           :  2   : 1
+Clothing, common outfit         :  4   : 1
+Glass bottle or vial            :  1   : *
+Grappling Hook                  :  2   : 4
+Holy Symbol                     : 25   : *
+Holy Water, per vial            : 10   : *
+Horseshoes & shoeing            :  1   : 10
+Ink, per jar                    :  8   : .5
+Iron Spikes, 12                 :  1   : 1
+Ladder, 10 ft.                  :  1   : 20
+Lantern                         :  5   : 2
