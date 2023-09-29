@@ -35,9 +35,8 @@ class Application(Frame):
         
         
         # GUI elements
-        self.txt_master_list = Text(self, width = 45, height = 15, wrap = WORD)
-        self.txt_master_list.grid()
-        
+        self.main_list = Listbox(self, selectmode = "multiple")
+        self.main_list.grid()
         
     def fill_master(self):
         '''set up the master item list'''

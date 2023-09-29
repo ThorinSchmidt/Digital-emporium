@@ -1,51 +1,23 @@
-Backpack (Standard or Halfling)
-4 gp
-*
-Belt Pouch
-1 gp
-*
-Bit and bridle
-15 sp
-3
-Candles, 12
-1 gp
-*
-Chalk, small bag of pieces
-2 gp
-*
-Cloak
-2 gp
-1
-Clothing, common outfit
-4 gp
-1
-Glass bottle or vial
-1 gp
-*
-Grappling Hook
-2 gp
-4
-Holy Symbol
-25 gp
-*
-Holy Water, per vial
-10 gp
-*
-Horseshoes & shoeing
-1 gp
-10
-Ink, per jar
-8 gp
-.5
-Iron Spikes, 12
-1 gp
-1
-Ladder, 10 ft.
-1 gp
-20
-Lantern
-5 gp
-2
-Lantern, Bullseye
-14 gp
-3
+Backpack (Standard or Halfling)  4 gp  *   | G |  4   |  0.1
+Belt Pouch                       1 gp  *   | G |  1   |  0.1
+Bit and bridle                  15 sp  3   | G |  1.5 |  3
+Candles, 12                      1 gp  *   | G |  1   |  0.1
+Chalk, small bag of pieces       2 gp  *   | G |  2   |  0.1
+Cloak                            2 gp  1   | G |  2   |  1
+Clothing, common outfit          4 gp  1   | G |  4   |  1 
+Glass bottle or vial             1 gp  *   | G |  1   |  0.1
+Grappling Hook                   2 gp  4   | G |  2   |  4
+Holy Symbol                     25 gp  *   | G | 25   |  0.1
+Holy Water, per vial            10 gp  *   | G | 10   |  0.1
+Horseshoes & shoeing             1 gp 10   | G |  1   | 10
+Ink, per jar                     8 gp  0.5 | G |  8   |  0.5 
+Iron Spikes, 12                  1 gp  1   | G |  1   |  1
+Ladder, 10 ft.                   1 gp 20   | G |  1   | 20 
+Lantern                          5 gp  2   | G |  5   |  2
+Lantern, Bullseye               14 gp  3   | G | 14   |  3
+Lantern, Hooded                  8 gp  2   | G |  8   |  2
+Manacles (without padlock)       6 gp  4   | G |  6   |  4
+Map or scroll case               1 gp  0.5 | G |  1   |  0.5 
+Mirror, small metal              7 gp  *   | G |  7   |  0.1
+Oil (per flask)                  1 gp  1   | G |  1   |  1
+Padlock (with 2 keys)           12 gp  1   | G | 12   |  1
