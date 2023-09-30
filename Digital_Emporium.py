@@ -15,6 +15,8 @@
                     pUypDST9?usp=sharing
 '''
 from tkinter import *
+from tkinter import font
+import sys
 
 class Application(Frame):
     '''definition of the primary frame'''
@@ -28,31 +30,54 @@ class Application(Frame):
     def create_widgets(self):
         '''create the data structures and GUI elements'''
         # variables
-        self.master = self.fill_master()
-        self.purchases = {}
         self.use_core_rules = True
         self.use_custom = False
-        
+        self.box_element = font.Font(family="Courier")
+        self.data_list = self.fill_master()
+        self.purchases = []        
         
         # GUI elements
-        self.main_list = Listbox(self, selectmode = "multiple")
-        self.main_list.grid()
+        self.selection_lbx = Listbox(self, selectmode = "multiple", width = 46,
+                                height = 20, font = self.box_element)
+        self.selection_lbx.grid()
         
+        # populate the listbox
+        for item in range(len(self.data_list)):
+            self.selection_lbx.insert(END, self.data_list[item][0])
+	
+            # coloring alternative lines of listbox
+            self.selection_lbx.itemconfig(item,
+                    bg = "yellow" if item % 2 == 0 else "cyan")
+                
     def fill_master(self):
         '''set up the master item list'''
-        temp = { 1 : "bunch of stuff"}
-        
-        return temp
+        local_list = []
+        text_file = open("core.txt", "r")
 
+        for line in text_file:
+            entry = line.split('|')
+            # strip whitespace, convert cost and weight to float
+            entry[0] = entry[0].rstrip()
+            entry[1] = entry[1].strip()
+            entry[2] = float(entry[2])
+            entry[3] = float(entry[3])
+
+            local_list.append(entry)
+     
+        text_file.close()
+        
+        return local_list
 
 
 # Main
 
 root = Tk()
 root.title("Digital Emporium")
-root.geometry("600x400")
+root.geometry("1000x400")
+root.protocol("WM_DELETE_WINDOW", root.destroy)
 
 app = Application(root)
 
 root.mainloop()
+print('Done.')
 

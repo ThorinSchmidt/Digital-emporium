@@ -13,7 +13,8 @@ window.protocol("WM_DELETE_WINDOW", window.destroy)
 # Choosing selectmode as multiple
 # for selecting multiple options
 box_element = font.Font(family="Courier")
-list = Listbox(window, selectmode = "multiple", font = box_element)
+list = Listbox(window, selectmode = "multiple",
+                font = box_element)
 
 # Widget expands horizontally and
 # vertically by assigning both to
@@ -30,7 +31,7 @@ def fill_list():
     for line in text_file:
         entry = line.split('|')
         # strip whitespace, convert cost and weight to float
-        entry[0] = entry[0].strip()
+        entry[0] = entry[0].rstrip()
         entry[1] = entry[1].strip()
         entry[2] = float(entry[2])
         entry[3] = float(entry[3])
@@ -42,14 +43,15 @@ def fill_list():
     return local_list
 
 inventory = fill_list()
-
+valid_categories = "GW"
+line_count = 0
 for each_item in range(len(inventory)):
-	
-	list.insert(END, inventory[each_item][0])
-	
-	# coloring alternative lines of listbox
-	list.itemconfig(each_item,
-			bg = "lightgray" if each_item % 2 == 0 else "cyan")
+    if inventory[each_item][1] in valid_categories:
+        list.insert(END, inventory[each_item][0])
+        # coloring alternative lines of listbox
+        list.itemconfig(line_count,
+		bg = "lightgray" if line_count % 2 == 0 else "cyan")
+        line_count += 1
 	
 window.mainloop()
 print('done.')
