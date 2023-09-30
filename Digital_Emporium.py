@@ -25,33 +25,132 @@ class Application(Frame):
         """ Initialize the Frame. """
         super(Application, self).__init__(master)
         self.grid()
-        self.create_widgets()
         
-    def create_widgets(self):
-        '''create the data structures and GUI elements'''
         # variables
         self.use_core_rules = True
         self.use_custom = False
         self.box_element = font.Font(family="Courier")
-        self.data_list = self.fill_master()
-        self.purchases = []        
+        self.selection_list = []
+        self.data_list = []
+        self.purchases = []
+        self.flags = ""
         
+
+        
+        self.create_widgets()
+        self.update_master_list()
+        self.update_flags() # includes call to update selection list
+        
+    def create_widgets(self):
+        '''create the data structures and GUI elements'''
         # GUI elements
-        self.selection_lbx = Listbox(self, selectmode = "multiple", width = 46,
-                                height = 20, font = self.box_element)
-        self.selection_lbx.grid()
+        # create description label
+        Label(self,
+                text = "Categories to Display:"
+                ).grid(row = 0, column = 0, sticky = W)
+
+        # create General check button
+        self.display_general = BooleanVar()
+        self.display_general.set(True)
+        Checkbutton(self,
+                    text = "General",
+                    variable = self.display_general,
+                    command = self.update_flags
+                    ).grid(row = 2, column = 0, sticky = W)
         
-        # populate the listbox
-        for item in range(len(self.data_list)):
-            self.selection_lbx.insert(END, self.data_list[item][0])
-	
-            # coloring alternative lines of listbox
-            self.selection_lbx.itemconfig(item,
-                    bg = "yellow" if item % 2 == 0 else "cyan")
-                
-    def fill_master(self):
+        # create Weapons check button
+        self.display_weapons = BooleanVar()
+        self.display_weapons.set(True)
+        Checkbutton(self,
+                    text = "Weapons",
+                    variable = self.display_weapons,
+                    command = self.update_flags
+                    ).grid(row = 2, column = 1, sticky = W)
+
+        # create Armor check button
+        self.display_armor = BooleanVar()
+        self.display_armor.set(True)
+        Checkbutton(self,
+                    text = "Armor",
+                    variable = self.display_armor,
+                    command = self.update_flags
+                    ).grid(row = 2, column = 2, sticky = W)
+
+        # create Beasts check button
+        self.display_beasts = BooleanVar()
+        self.display_beasts.set(True)
+        Checkbutton(self,
+                    text = "Beasts",
+                    variable = self.display_beasts,
+                    command = self.update_flags
+                    ).grid(row = 3, column = 0, sticky = W)
+
+        # create Vehicles check button
+        self.display_vehicles = BooleanVar()
+        self.display_vehicles.set(True)
+        Checkbutton(self,
+                    text = "Vehicles",
+                    variable = self.display_vehicles,
+                    command = self.update_flags
+                    ).grid(row = 3, column = 1, sticky = W)
+
+        self.selection_lbx = Listbox(self,
+                                     selectmode = "multiple",
+                                     width = 46,
+                                     height = 20,
+                                     font = self.box_element)
+        self.selection_lbx.grid(row = 4, column = 0,
+                                columnspan = 3, sticky = W)
+
+    def update_flags(self):
+        """ rewrite the flag string """
+        self.flags = ""
+        
+        if self.display_general.get():
+            self.flags += "G"
+        
+        if self.display_weapons.get():
+            self.flags += "W"
+        
+        if self.display_armor.get():
+            self.flags += "A"
+        
+        if self.display_beasts.get():
+            self.flags += "B"
+            
+        if self.display_vehicles.get():
+            self.flags += "V"
+        
+        #print(self.flags)
+        self.update_selection_list()
+        
+
+    def update_selection_list(self):
+        ''' update the listbox. also make headings appear in "negative"
+            and cause entries to have alternating backgrounds between
+            yellow and blue '''
+        self.selection_lbx.delete(0, END)
+        itemcount = 0
+        for entry in self.master_list:
+            if entry[1] in self.flags:
+                self.selection_lbx.insert(END, entry[0])
+                if entry[2] < 0:
+                    self.selection_lbx.itemconfig(END, bg = 'black',
+                                                  fg='white')
+                    linecount = 0
+                else:
+                    if linecount % 2 -- 0:
+                        self.selection_lbx.itemconfig(END, bg = 'yellow')
+                    else:
+                        self.selection_lbx.itemconfig(END, bg = 'cyan')
+                    linecount += 1
+                    
+        #for entry in self.selection_list:
+        #    print(entry)
+    
+    def update_master_list(self):
         '''set up the master item list'''
-        local_list = []
+        self.master_list = []
         text_file = open("core.txt", "r")
 
         for line in text_file:
@@ -62,18 +161,15 @@ class Application(Frame):
             entry[2] = float(entry[2])
             entry[3] = float(entry[3])
 
-            local_list.append(entry)
+            self.master_list.append(entry)
      
         text_file.close()
-        
-        return local_list
-
 
 # Main
 
 root = Tk()
 root.title("Digital Emporium")
-root.geometry("1000x400")
+root.geometry("1000x500")
 root.protocol("WM_DELETE_WINDOW", root.destroy)
 
 app = Application(root)

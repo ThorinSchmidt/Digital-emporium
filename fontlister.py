@@ -8,11 +8,9 @@ fonts.sort()
 
 def populate(frame):
     '''Put in the fonts'''
-    listnumber = 1
     for item in fonts:
-        label = "listlabel" + str(listnumber)
         label = Label(frame,text=item,font=(item, 16)).pack()
-        listnumber += 1
+
 
 def onFrameConfigure(canvas):
     '''Reset the scroll region to encompass the inner frame'''

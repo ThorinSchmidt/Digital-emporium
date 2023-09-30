@@ -1,4 +1,4 @@
-# Category boxes
+# Checkboxes Test
 # Demonstrates check buttons
 from tkinter import *
 
@@ -43,7 +43,7 @@ class Application(Frame):
                     command = self.update_flags
                     ).grid(row = 2, column = 2, sticky = W)
 
-        # create easts check button
+        # create Beasts check button
         self.display_beasts = BooleanVar()
         self.display_beasts.set(True)
         Checkbutton(self,
@@ -52,7 +52,7 @@ class Application(Frame):
                     command = self.update_flags
                     ).grid(row = 3, column = 0, sticky = W)
 
-        # create Vehicle check button
+        # create Vehicles check button
         self.display_vehicles = BooleanVar()
         self.display_vehicles.set(True)
         Checkbutton(self,

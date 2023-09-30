@@ -49,7 +49,7 @@ for each_item in range(len(inventory)):
     if inventory[each_item][1] in valid_categories:
         list.insert(END, inventory[each_item][0])
         # coloring alternative lines of listbox
-        list.itemconfig(line_count,
+        list.itemconfig(END,
 		bg = "lightgray" if line_count % 2 == 0 else "cyan")
         line_count += 1
 	
