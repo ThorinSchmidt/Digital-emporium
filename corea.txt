@@ -1,51 +1,6 @@
-Backpack (Standard or Halfling)
-4 gp
-*
-Belt Pouch
-1 gp
-*
-Bit and bridle
-15 sp
-3
-Candles, 12
-1 gp
-*
-Chalk, small bag of pieces
-2 gp
-*
-Cloak
-2 gp
-1
-Clothing, common outfit
-4 gp
-1
-Glass bottle or vial
-1 gp
-*
-Grappling Hook
-2 gp
-4
-Holy Symbol
-25 gp
-*
-Holy Water, per vial
-10 gp
-*
-Horseshoes & shoeing
-1 gp
-10
-Ink, per jar
-8 gp
-.5
-Iron Spikes, 12
-1 gp
-1
-Ladder, 10 ft.
-1 gp
-20
-Lantern
-5 gp
-2
-Lantern, Bullseye
-14 gp
-3
+GENERAL ITEMS                     Price Weight | G |  -1   |  0   | None
+-----------------------------------------------| G |  -1   |  0   | None
+ Backpack (Standard or Halfling)   4 gp    *   | G |   4   |  0.1 | A Backpack will hold a maximum 40 pounds or 3 cubic feet of goods. Some items may be lashed to the outside, and thus count toward the weight limit but not the volume limit. A Halfling's backpack holds at most 30 pounds and/or 1½ cubic feet, but costs the same as a full-sized item.
+ Belt Pouch                        1 gp    *   | G |   1   |  0.1 | No description available
+ Bit and bridle                   15 sp    3   | G |   1.5 |  3   | No description available
+ Candles, 12                       1 gp    *   | G |   1   |  0.1 | A Candle will shed light over a 5' radius, with dim light extending 5' further. A normal candle will burn about 3 turns per inch of height.

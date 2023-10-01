@@ -31,7 +31,8 @@ class Application(Frame):
         self.use_custom = False
         self.box_element = font.Font(family="Courier")
         self.selection_list = []
-        self.data_list = []
+        self.master_list = []
+        self.master_dict = {}
         self.purchases = []
         self.flags = ""
         
@@ -97,10 +98,21 @@ class Application(Frame):
         self.selection_lbx = Listbox(self,
                                      selectmode = "multiple",
                                      width = 46,
-                                     height = 20,
+                                     height = 15,
                                      font = self.box_element)
         self.selection_lbx.grid(row = 4, column = 0,
                                 columnspan = 3, sticky = W)
+
+        self.description_txt = Text(self,
+                                    width = 46,
+                                    height = 6,
+                                    font = self.box_element,
+                                    wrap = WORD)
+        self.description_txt.grid(row = 5,
+                                  column = 0,
+                                  columnspan = 3,
+                                  pady = 10,
+                                  sticky = W)
 
     def update_flags(self):
         """ rewrite the flag string """
@@ -151,7 +163,9 @@ class Application(Frame):
     def update_master_list(self):
         '''set up the master item list'''
         self.master_list = []
-        text_file = open("core.txt", "r")
+        self.master_dict = {}
+        
+        text_file = open("corea.txt", "r")
 
         for line in text_file:
             entry = line.split('|')
@@ -162,11 +176,17 @@ class Application(Frame):
             entry[3] = float(entry[3])
 
             self.master_list.append(entry)
+            if entry[2] >= 0:
+                key = entry[0]
+                value = entry[-1].strip()
+                self.master_dict[key] = [value]
      
         text_file.close()
 
-# Main
+        for key in self.master_dict.keys():
+            print(key, self.master_dict[key])
 
+# Main
 root = Tk()
 root.title("Digital Emporium")
 root.geometry("1000x500")
