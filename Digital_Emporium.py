@@ -36,12 +36,24 @@ class Application(Frame):
         self.purchases = []
         self.flags = ""
         
-
-        
         self.create_widgets()
         self.update_master_list()
         self.update_flags() # includes call to update selection list
+
+    def get_element(self, event):
+        '''retrieve index of selected element'''
+        self.description_txt.delete(0.0, END)
+        selection = event.widget.curselection()
+        index = selection[0]
+        key = event.widget.get(index)
+        if key in self.master_dict:
+            text = self.master_dict[key]
+            self.description_txt.insert(0.0, text)
+            #print(text)
+
         
+
+
     def create_widgets(self):
         '''create the data structures and GUI elements'''
         # GUI elements
@@ -96,12 +108,13 @@ class Application(Frame):
                     ).grid(row = 3, column = 1, sticky = W)
 
         self.selection_lbx = Listbox(self,
-                                     selectmode = "multiple",
+                                     selectmode = SINGLE,
                                      width = 46,
                                      height = 15,
                                      font = self.box_element)
         self.selection_lbx.grid(row = 4, column = 0,
                                 columnspan = 3, sticky = W)
+        self.selection_lbx.bind('<<ListboxSelect>>', self.get_element)
 
         self.description_txt = Text(self,
                                     width = 46,
@@ -179,12 +192,13 @@ class Application(Frame):
             if entry[2] >= 0:
                 key = entry[0]
                 value = entry[-1].strip()
-                self.master_dict[key] = [value]
+                self.master_dict[key] = value
      
         text_file.close()
 
-        for key in self.master_dict.keys():
-            print(key, self.master_dict[key])
+        #for key in self.master_dict.keys():
+        #    print(key, self.master_dict[key])
+
 
 # Main
 root = Tk()

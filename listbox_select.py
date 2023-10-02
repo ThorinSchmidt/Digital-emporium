@@ -1,18 +1,44 @@
+# -*- coding: utf-8 -*-
 import tkinter as tk
-def on_select(event):
-    # get the selected item
-    selected_item = event.widget.get(tk.ACTIVE)
-    print(selected_item)
-# create the main window
+ 
+def getElement(event):
+  selection = event.widget.curselection()
+  index = selection[0]
+  value = event.widget.get(index)
+  
+  result.set(value)
+  print(index,' -> ',value)
+
+def left_press(event):
+  print("pressed left")
+  selection = event.widget.curselection()
+  index = selection[0]
+  value = event.widget.get(index)
+  print(index,' -> ',value)
+
+def right_press(event):
+  print("pressed right")
+  selection = event.widget.curselection()
+  index = selection[0]
+  value = event.widget.get(index)
+  print(index,' -> ',value)
+
+ 
 root = tk.Tk()
-# create a listbox widget
-listbox = tk.Listbox(root, selectmode = tk.MULTIPLE)
-listbox.pack()
-# add some items to the listbox
-listbox.insert(0, "Item 1")
-listbox.insert(1, "Item 2")
-listbox.insert(2, "Item 3")
-# bind the click event to the listbox widget
-listbox.bind("<<ListboxSelect>>", on_select)
-# run the main loop
+root.title("Code4Example.com")     # Add a title
+ 
+result =tk.StringVar()
+ 
+tk.Label(root,text="""Click Listbox Element""").grid(row = 0, column = 0)
+tk.Label(root,text="""result""", textvariable=result).grid(row = 1, column = 0)
+ 
+var2 = tk.StringVar()
+var2.set(('Apple','Banana','Pear', 'Peach'))
+lb = tk.Listbox(root, listvariable=var2)
+lb.grid(row = 0, column = 1)
+lb.bind('<<ListboxSelect>>', getElement) #Select click
+lb.bind('<Left>', left_press)
+lb.bind('<Right>', right_press)
+ 
+ 
 root.mainloop()
