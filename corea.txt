@@ -1,6 +1,5 @@
-GENERAL ITEMS                     Price Weight | G |  -1   |  0   | None
------------------------------------------------| G |  -1   |  0   | None
- Backpack (Standard or Halfling)   4 gp    *   | G |   4   |  0.1 | A Backpack will hold a maximum 40 pounds or 3 cubic feet of goods. Some items may be lashed to the outside, and thus count toward the weight limit but not the volume limit. A Halfling's backpack holds at most 30 pounds and/or 1½ cubic feet, but costs the same as a full-sized item.
- Belt Pouch                        1 gp    *   | G |   1   |  0.1 | No description available
- Bit and bridle                   15 sp    3   | G |   1.5 |  3   | No description available
- Candles, 12                       1 gp    *   | G |   1   |  0.1 | A Candle will shed light over a 5' radius, with dim light extending 5' further. A normal candle will burn about 3 turns per inch of height.
+GENERAL ITEMS                    | Price | Weight| G |  -1   |  0   | None
+ Backpack (Standard or Halfling) |  4 gp |    *  | G |   4   |  0.1 | A Backpack will hold a maximum 40 pounds or 3 cubic feet of goods. Some items may be lashed to the outside, and thus count toward the weight limit but not the volume limit. A Halfling's backpack holds at most 30 pounds and/or 1½ cubic feet, but costs the same as a full-sized item.
+ Belt Pouch                      |  1 gp |    *  | G |   1   |  0.1 | No description available
+ Bit and bridle                  | 15 sp |    3  | G |   1.5 |  3   | No description available
+ Candles, 12                     |  1 gp |    *  | G |   1   |  0.1 | A Candle will shed light over a 5' radius, with dim light extending 5' further. A normal candle will burn about 3 turns per inch of height.

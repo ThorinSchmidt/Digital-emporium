@@ -31,13 +31,12 @@ class Application(Frame):
         self.use_custom = False
         self.box_element = font.Font(family="Courier")
         self.selection_list = []
-        self.master_list = []
         self.master_dict = {}
-        self.purchases = []
+        self.purchases = StringVar(value = [])
         self.flags = ""
         
         self.create_widgets()
-        self.update_master_list()
+        self.update_master_dict()
         self.update_flags() # includes call to update selection list
 
     def get_element(self, event):
@@ -46,8 +45,8 @@ class Application(Frame):
         selection = event.widget.curselection()
         index = selection[0]
         key = event.widget.get(index)
-        if key in self.master_dict:
-            text = self.master_dict[key]
+        if self.master_dict[key][4] > -1:
+            text = self.master_dict[key][-1]
             self.description_txt.insert(0.0, text)
             #print(text)
 
@@ -109,24 +108,92 @@ class Application(Frame):
 
         self.selection_lbx = Listbox(self,
                                      selectmode = SINGLE,
-                                     width = 46,
+                                     width = 47,
                                      height = 15,
                                      font = self.box_element)
-        self.selection_lbx.grid(row = 4, column = 0,
-                                columnspan = 3, sticky = W)
+        self.selection_lbx.grid(row = 4,
+                                rowspan = 2,
+                                column = 0,
+                                columnspan = 3,
+                                sticky = W)
         self.selection_lbx.bind('<<ListboxSelect>>', self.get_element)
 
+        self.cart_in_btn = Button(self,
+                                  font = self.box_element,
+                                  width = 13,
+                                  command = self.purchase_item,
+                                  text = "Cart In  (->)")
+        self.cart_in_btn.grid(row = 4,
+                              column = 3,
+                              sticky = S)
+        
+        self.cart_out_btn = Button(self,
+                                   font = self.box_element,
+                                   width = 13,
+                                   command = self.return_item,
+                                   text = "Cart Out (<-)")
+        self.cart_out_btn.grid(row = 5,
+                               column = 3,
+                               sticky = N)
+
+        self.empty_cart_btn = Button(self,
+                                     font = self.box_element,
+                                     width = 13,
+                                     command = self.empty_cart,
+                                     text = "Empty Cart")
+        self.empty_cart_btn.grid(row = 5,
+                                 column = 3,
+                                 sticky = S)
+        
+        self.basket_lbl = Label(self,
+                                width = 47,
+                                font =self.box_element,
+                                anchor = W,
+                                text = "Purchases")
+        self.basket_lbl.grid(row = 2,
+                             column = 4,
+                             sticky = W)
+
+        self.basket_lbx = Listbox(self,
+                                  selectmode = SINGLE,
+                                  listvariable = self.purchases,
+                                  width = 47,
+                                  height = 15,
+                                  font = self.box_element)
+        self.basket_lbx.grid(row = 4,
+                             rowspan = 2,
+                             column = 4,
+                             sticky = W)
+        
         self.description_txt = Text(self,
-                                    width = 46,
+                                    width = 47,
                                     height = 6,
                                     font = self.box_element,
                                     wrap = WORD)
-        self.description_txt.grid(row = 5,
+        self.description_txt.grid(row = 6,
                                   column = 0,
                                   columnspan = 3,
                                   pady = 10,
                                   sticky = W)
+        
+    def purchase_item(self):
+        '''move selected item to the "basket"'''
 
+        key = self.selection_lbx.get(ACTIVE)
+        value = self.master_dict.get(key)
+        print(key, ':', value)
+        for key in self.master_dict.keys():
+            print(key)
+        
+
+    def return_item(self):
+        '''remove selected item from the "basket"'''
+        pass
+
+    def empty_cart(self):
+        '''remove selected item from the "basket"'''
+        self.purchases.set(value = [])
+    
     def update_flags(self):
         """ rewrite the flag string """
         self.flags = ""
@@ -156,10 +223,13 @@ class Application(Frame):
             yellow and blue '''
         self.selection_lbx.delete(0, END)
         itemcount = 0
-        for entry in self.master_list:
-            if entry[1] in self.flags:
-                self.selection_lbx.insert(END, entry[0])
-                if entry[2] < 0:
+        for key in self.master_dict.keys():
+            value = self.master_dict[key]
+            #print(value)
+            if value[3] in self.flags:
+                itemcount += 1
+                self.selection_lbx.insert(END, key)
+                if value[4] < 0:
                     self.selection_lbx.itemconfig(END, bg = 'black',
                                                   fg='white')
                     linecount = 0
@@ -170,30 +240,31 @@ class Application(Frame):
                         self.selection_lbx.itemconfig(END, bg = 'cyan')
                     linecount += 1
                     
+        self.selection_lbx.focus_set()
+        self.selection_lbx.activate(0)
+        #print(self.selection_lbx.get(ACTIVE))
         #for entry in self.selection_list:
         #    print(entry)
     
-    def update_master_list(self):
+    def update_master_dict(self):
         '''set up the master item list'''
-        self.master_list = []
         self.master_dict = {}
         
         text_file = open("corea.txt", "r")
 
         for line in text_file:
             entry = line.split('|')
-            # strip whitespace, convert cost and weight to float
-            entry[0] = entry[0].rstrip()
-            entry[1] = entry[1].strip()
-            entry[2] = float(entry[2])
-            entry[3] = float(entry[3])
+            # strip whitespace, convertcost and weight to float
+            entry[3] = entry[3].strip()
+            entry[4] = float(entry[4])
+            entry[5] = float(entry[5])
+            entry[6] = entry[6].strip()
 
-            self.master_list.append(entry)
-            if entry[2] >= 0:
-                key = entry[0]
-                value = entry[-1].strip()
-                self.master_dict[key] = value
-     
+            key = entry[0]+entry[1]+entry[2]
+            #print(key)
+            value = entry
+            self.master_dict[key] = value
+ 
         text_file.close()
 
         #for key in self.master_dict.keys():
@@ -203,7 +274,7 @@ class Application(Frame):
 # Main
 root = Tk()
 root.title("Digital Emporium")
-root.geometry("1000x500")
+root.geometry("1100x500")
 root.protocol("WM_DELETE_WINDOW", root.destroy)
 
 app = Application(root)
