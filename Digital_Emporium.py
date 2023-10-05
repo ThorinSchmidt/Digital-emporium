@@ -32,7 +32,7 @@ class Application(Frame):
         self.box_element = font.Font(family="Courier")
         self.selection_list = []
         self.master_dict = {}
-        self.purchases = StringVar(value = [])
+        self.purchase_list = []
         self.flags = ""
         
         self.create_widgets()
@@ -154,13 +154,11 @@ class Application(Frame):
                              column = 4,
                              sticky = W)
 
-        self.basket_lbx = Listbox(self,
-                                  selectmode = SINGLE,
-                                  listvariable = self.purchases,
+        self.basket_txt = Listbox(self,                                  selectmode = SINGLE,
                                   width = 47,
                                   height = 15,
                                   font = self.box_element)
-        self.basket_lbx.grid(row = 4,
+        self.basket_txt.grid(row = 4,
                              rowspan = 2,
                              column = 4,
                              sticky = W)
@@ -178,12 +176,15 @@ class Application(Frame):
         
     def purchase_item(self):
         '''move selected item to the "basket"'''
-
         key = self.selection_lbx.get(ACTIVE)
         value = self.master_dict.get(key)
-        print(key, ':', value)
-        for key in self.master_dict.keys():
-            print(key)
+        if value[4] > -1:
+            item = value[0]+"\n"
+            self.purchase_list.append(item)
+            print(self.purchase_list)
+
+
+
         
 
     def return_item(self):
