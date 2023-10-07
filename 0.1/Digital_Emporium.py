@@ -180,7 +180,7 @@ class Application(Frame):
         value = self.master_dict.get(key)
         if value[4] > -1:
             item = value[0]+"\n"
-            self.purchase_list.append(item)
+            self.purchase_dict.append(item)
             print(self.purchase_list)
 
 

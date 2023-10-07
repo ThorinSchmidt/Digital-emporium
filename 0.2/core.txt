@@ -1,0 +1,50 @@
+ID   ,NAME                            ,PRICE,WEIGHT,CAT,SOURCE 
+---------------------------------------------------------------
+    0,GENERAL ITEMS                   , -1  , -1   , G , C
+    1, Backpack (Standard or Halfling),  4  ,  0.1 , G , C
+    2, Belt Pouch                     ,  1  ,  0.1 , G , C
+    3, Bit and bridle                 ,  1.5,  3   , G , C 
+    4, Candles (12)                   ,  1  ,  0.1 , G , C
+    5, Chalk (small bag of pieces)    ,  2  ,  0.1 , G ,   2   ,  0.1
+    6, Cloak                          ,  2  ,  1   , G ,   2   ,  1
+    7, Clothing (common outfit)       ,  4  ,  1   , G ,   4   ,  1 
+    8, Glass bottle or vial           ,  1  ,  0.1 , G ,   1   ,  0.1
+    9, Grappling Hook                 ,  2  ,  4   , G ,   2   ,  4
+   10, Holy Symbol                    ,  5  ,  0.1 , G ,  25   ,  0.1
+   11, Holy Water  (Per vial)         , 10  ,  0.1 , G ,  10   ,  0.1
+   12, Horseshoes & shoeing           ,  1  , 10   , G ,   1   , 10
+   13, Ink (per jar)                  ,  8  ,  0.5 , G ,   8   ,  0.5 
+   14, Iron Spikes (12)               ,  1  ,  1   , G ,   1   ,  1
+   15, Ladder (10 ft.)                ,  1  , 20   , G ,   1   , 20 
+   16, Lantern                        ,  5  ,  2   , G ,   5   ,  2
+   17, Lantern (Bullseye)             , 14  ,  3   , G ,  14   ,  3
+   18, Lantern 9Hooded)               ,  8  ,  2   , G ,   8   ,  2
+   19, Manacles (without padlock)     ,  6  ,  4   , G ,   6   ,  4
+   20, Map or scroll case             ,  1  ,  0.5 , G ,   1   ,  0.5 
+   21, Mirror (small metal)           ,  7  ,  0.1 , G ,   7   ,  0.1
+   22, Oil (per flask)                ,  1  ,  1   , G ,   1   ,  1
+   23, Padlock (with 2 keys)          , 12  ,  1   , G ,  12   ,  1
+   24,WEAPONS                         , -1  , -1   , W ,  -1   ,  0
+   25, Axes                           , -1  , -1   , W ,   0   ,  0
+   26,  Hand Axe                      ,  4  ,  5   , W ,   4   ,  5
+   27,  Battle Axe                    ,   7 gp    7   , W ,   7   ,  7
+   28,  Great Axe                     ,  14 gp   15   , W ,  14   , 15 
+   29, Bows                           ,               , H ,   0   ,  0
+   30,  Shortbow                      ,  25 gp    2   , W ,  25   ,  2
+   31,   Shortbow Arrow               ,   1 sp    *   , W ,   0.1 ,  0.1
+   32,   Silver Shortbow Arrow        ,   2 gp    *   , W ,   2   ,  0.1
+   33,  Longbow                       ,  60 gp    3   , W ,  60   ,  3
+   34,   Longbow Arrow                ,   2 sp    *   , W ,   0.2 ,  0.1
+   35,   Silver Longbow Arrow         ,   4 gp    *   , W ,   4   ,  0.1
+   36,  Light Crossbow                ,  30 gp    7   , W ,  30   ,  7
+   
+    ,ARMOR                             Price Weight , A ,  -1   ,  0
+    , Leather Armor                    20 gp   15   , A ,  20   , 15
+    ,Chain Mail                       60 gp   40   , A ,  60   , 40
+    ,BEASTS OF BURDEN                  Price Weight , B ,  -1   ,  0
+    , Horse (Draft)                   120 gp   --   , B , 120   , -1     
+    , Horse (Riding)                    75 gp   --   , B ,  75   , -1
+    , Horse (War)                      200 gp   --   , B , 200   , -1
+    ,VEHICLES                          Price Weight , V ,  -1   , -1
+    , Chariot                         400 gp   --   , V , 400   , -1 
+    , Coach                          1500 gp   --   , V , 1500  , -1

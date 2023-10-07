@@ -1,0 +1,48 @@
+ID,NAME,PRICE,WEIGHT,CAT,SOURCE
+0,GENERAL ITEMS,-1,-1,G,C
+1,  Backpack (Standard or Halfling),4,0.1,G,C
+2,  Belt Pouch,1,0.1,G,C
+3,  Bit and bridle,1.5,3,G,C
+4,  Candles (12),1,0.1,G,C
+5,  Chalk (small bag of pieces),2,0.1,G,C
+6,  Cloak,2,1,G,C
+7,  Clothing (common outfit),4,1,G,C
+8,  Glass bottle or vial,1,0.1,G,C
+9,  Grappling Hook,2,4,G,C
+10,  Holy Symbol,5,0.1,G,C
+11,  Holy Water (Per vial),10,0.1,G,C
+12,  Horseshoes & shoeing,1,10,G,C
+13,  Ink (per jar),8,0.5,G,C
+14,  Iron Spikes (12),1,1,G,C
+15,  Ladder (10 ft.),1,20,G,C
+16,  Lantern,5,2,G,C
+17,  Lantern (Bullseye),14,3,G,C
+18,  Lantern 9Hooded),8,2,G,C
+19,  Manacles (without padlock),6,4,G,C
+20,  Map or scroll case,1,0.5,G,C
+21,  Mirror (small metal),7,0.1,G,C
+22,  Oil (per flask),1,1,G,C
+23,  Padlock (with 2 keys),12,1,G,C
+24,WEAPONS,-1,-1,W,C
+25,  Axes,-2,-2,W,C
+26,    Hand Axe,4,5,W,C
+27,    Battle Axe,7,7,W,C
+28,    Great Axe,14,15,W,C
+29,  Bows,-2,-2,W,C
+30,    Shortbow,25,2,W,C
+31,      Shortbow Arrow,0.1,0.1,W,C
+32,      Silver Shortbow Arrow,2,0.1,W,C
+33,    Longbow,60,3,W,C
+34,      Longbow Arrow,0.2,0.1,W,C
+35,      Silver Longbow Arrow,4,0.1,W,C
+36,  Light Crossbow,30,7,W,C
+37,ARMOR,-1,-1,A,C
+38,  Leather Armor,20,15,A,C
+39,  Chain Mail,60,40,A,C
+40,BEASTS OF BURDEN,-1,-1,B,C
+41,  Horse (Draft),120,-1,B,C
+42,  Horse (Riding),75,-1,B,C
+43,  Horse (War),200,-1,B,C
+44,VEHICLES,-1,-1,V,C
+45,  Chariot,400,-1,V,C
+46,  Coach,1500,-1,V,C
