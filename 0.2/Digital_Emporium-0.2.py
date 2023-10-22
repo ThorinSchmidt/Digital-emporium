@@ -18,9 +18,50 @@ import tkinter as tk
 import tkinter.font as tkf
 import tkinter.ttk as ttk
 
+class ListStyle(ttk.Style):
+    '''defines the style for the treeviews in the application'''
+    def __init__(self, master):
+        super(ListStyle, self).__init__(master)
+
+        # Pick A Theme
+        self.theme_use('default')
+
+        # Configure the Treeview Colors
+        self.configure("Treeview",
+                background="#D3D3D3",
+                foreground="black",
+                rowheight=25,
+                fieldbackground="#D3D3D3")
+
+        # Change Selected Color
+        self.map('Treeview',
+                background=[('selected', "#347083")])
+
+class TreeFrame(tk.Frame):
+    '''generic frame for Treeviews, contains treeview & vert scrollbar'''
+    def __init__(self, master,
+                 geometry=(110,100),
+                 headings=("One", "Two", "Three"),
+                 columns=(("One", 'W', 33),
+                          ("Two", 'W', 33),
+                          ("Three", 'W', 33)),
+                 grid_x=0, grid_y=0, frame_sticky='W'):
+        super(TreeFrame, self).__init__(master)
+
+        #Create Treeview abd Scrollbar widgets
+        self.tree_view = ttk.Treeview(columns=headings, show="headings")
+        vsb = ttk.Scrollbar(orient="vertical",
+            command=self.tree_view.yview)
+        self.tree_view.configure(yscrollcommand=vsb.set)
+        self.tree_view.grid(column=0, row=0, sticky='nsew')
+        vsb.grid(column=1, row=0, sticky='ns')
+
+        #Grid the TreeFrame
+        self.grid(row=grid_y, column=grid_x, sticky=frame_sticky)
+    
+
 class Application(tk.Frame):
     '''definition of the primary frame'''
-    
     def __init__(self, master):
         """ Initialize the Frame. """
         super(Application, self).__init__(master)
@@ -37,8 +78,8 @@ class Application(tk.Frame):
         self.update_flags() # includes call to update selection list
 
     def create_widgets(self):
-        '''create the data structures and GUI elements'''
-        pass
+        '''create the GUI elements'''
+        self.inventory = TreeFrame(self)
     
     def update_flags(self):
         """ rewrite the flag string """
@@ -64,9 +105,9 @@ class Application(tk.Frame):
             #value = entry[:]
             self.master_dictionary.update({key : entry})
 
-        for key in self.master_dictionary.keys():
-            value = self.master_dictionary[key]
-            print(key ,":", value)
+        #for key in self.master_dictionary.keys():
+        #    value = self.master_dictionary[key]
+        #    print(key ,":", value)
  
         csv.close()
 
