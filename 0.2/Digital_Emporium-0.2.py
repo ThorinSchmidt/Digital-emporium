@@ -40,15 +40,18 @@ class ListStyle(ttk.Style):
 class TreeFrame(tk.Frame):
     '''generic frame for Treeviews, contains treeview & vert scrollbar'''
     def __init__(self, master,
-                 geometry=(110,100),
+                 geometry=(310,100),
                  headings=("One", "Two", "Three"),
-                 columns=(("One", 'W', 33),
-                          ("Two", 'W', 33),
-                          ("Three", 'W', 33)),
-                 grid_x=0, grid_y=0, frame_sticky='W'):
+                 columns=(("One", tk.W, 100),
+                          ("Two", tk.W, 100),
+                          ("Three", tk.W, 100)),
+                 dictionary={},
+                 grid_x=0,
+                 grid_y=0,
+                 frame_sticky=tk.W):
         super(TreeFrame, self).__init__(master)
 
-        #Create Treeview abd Scrollbar widgets
+        #Create Treeview and Scrollbar widgets
         self.tree_view = ttk.Treeview(columns=headings, show="headings")
         vsb = ttk.Scrollbar(orient="vertical",
             command=self.tree_view.yview)
@@ -56,6 +59,36 @@ class TreeFrame(tk.Frame):
         self.tree_view.grid(column=0, row=0, sticky='nsew')
         vsb.grid(column=1, row=0, sticky='ns')
 
+        # Define treeview Columns
+        #self.tree_view['columns'] = headings
+
+        # Format tue Columns
+        self.tree_view.column("#0", width=0, stretch=False)
+        for entry in columns:
+            self.tree_view.column(entry[0], anchor=entry[1],
+                                  width=entry[2], stretch=False)
+        # Create Headings
+        self.tree_view.heading("#0", text="", anchor=tk.W)
+        for heading in headings:
+            self.tree_view.heading(heading, text=heading.title(), anchor=tk.W,
+                                   command=lambda c=heading: sortby(self.tree,
+                                                                    c, 0))
+        #Fill the treeview
+        for key in dictionary.keys():
+            value = dictionary[key]
+            if float(value[1]) < 0:
+                price = ''
+            else:
+                price = value[1]
+
+            if float(value[2]) < 0:
+                weight = ''
+            else:
+                weight = value[2]
+
+            entry = (key,value[0], price, weight)
+            self.tree_view.insert('', 'end', values=entry)
+        
         #Grid the TreeFrame
         self.grid(row=grid_y, column=grid_x, sticky=frame_sticky)
     
@@ -66,11 +99,13 @@ class Application(tk.Frame):
         """ Initialize the Frame. """
         super(Application, self).__init__(master)
         self.grid()
+
+        # configure style
+        self.style = ListStyle(self)
         
         # variables
         self.data = tkf.Font(family="Courier")
         self.master_dictionary = {}
-        self.headings = []
         self.flags = ""
         self.parse_file()
         
@@ -79,7 +114,23 @@ class Application(tk.Frame):
 
     def create_widgets(self):
         '''create the GUI elements'''
-        self.inventory = TreeFrame(self)
+        #test_dict = {0 : ("A", "B"),
+        #             1 : ("D", "E"),
+        #             2 : ("G", "H"),
+        #             3 : ("J", "K"),
+        #             4 : ("M", "N"),
+        #             5 : ("P", "Q")}
+        self.inventory = TreeFrame(self,
+                                   geometry=(400,100),
+                                   headings=("ID", "Item", "Price(GP)", "Weight"),
+                                   columns=(("ID", tk.W, 0),
+                                            ("Item", tk.W, 200),
+                                            ("Price(GP)", tk.CENTER, 55),
+                                            ("Weight", tk.CENTER, 55)),
+                                   dictionary=self.master_dictionary,
+                                   grid_x=0,
+                                   grid_y=0,
+                                   frame_sticky=tk.W)
     
     def update_flags(self):
         """ rewrite the flag string """
@@ -90,7 +141,9 @@ class Application(tk.Frame):
         '''set up the master item list'''
         csv = open("items.csv", "r")
 
-        self.headings = csv.readline().split()
+        #get rid of first line in csv file
+        csv.readline().split()
+           
         for line in csv:
             entry = line.split(',')
             # strip whitespace, convert numerics
