@@ -51,6 +51,7 @@ class TreeFrame(tk.Frame):
                  frame_sticky=tk.W):
         super(TreeFrame, self).__init__(master)
 
+
         #Create Treeview and Scrollbar widgets
         self.tree_view = ttk.Treeview(columns=headings, show="headings")
         vsb = ttk.Scrollbar(orient="vertical",
@@ -59,8 +60,12 @@ class TreeFrame(tk.Frame):
         self.tree_view.grid(column=0, row=0, sticky='nsew')
         vsb.grid(column=1, row=0, sticky='ns')
 
-        # Define treeview Columns
-        #self.tree_view['columns'] = headings
+
+        # Create Striped Row Tags
+        self.tree_view.tag_configure('oddrow', background="yellow")
+        self.tree_view.tag_configure('evenrow', background="lightblue")
+        self.tree_view.tag_configure('subheadrow', background="black",
+                                     foreground="white")
 
         # Format tue Columns
         self.tree_view.column("#0", width=0, stretch=False)
@@ -74,6 +79,7 @@ class TreeFrame(tk.Frame):
                                    command=lambda c=heading: sortby(self.tree,
                                                                     c, 0))
         #Fill the treeview
+        line_count = 0
         for key in dictionary.keys():
             value = dictionary[key]
             if float(value[1]) < 0:
@@ -87,7 +93,20 @@ class TreeFrame(tk.Frame):
                 weight = value[2]
 
             entry = (key,value[0], price, weight)
-            self.tree_view.insert('', 'end', values=entry)
+
+            if price == '':
+                self.tree_view.insert(parent='', index='end', iid=line_count,
+                                      text='', values=entry,
+                                      tags=('subheadrow',))
+                
+            elif line_count % 2 == 0:
+                self.tree_view.insert(parent='', index='end', iid=line_count,
+                                      text='', values=entry, tags=('evenrow',))
+            else:
+                self.tree_view.insert(parent='', index='end', iid=line_count,
+                                      text='', values=entry, tags=('oddrow',))
+
+            line_count += 1
         
         #Grid the TreeFrame
         self.grid(row=grid_y, column=grid_x, sticky=frame_sticky)
