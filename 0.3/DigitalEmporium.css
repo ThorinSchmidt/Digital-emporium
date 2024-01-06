@@ -1,7 +1,28 @@
 
+body {
+	background-color: black;
+	color: white;
+
+}
+
+button {
+	width: 6em;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 0;
+	border-top: 3px solid black;
+}
+
+.c {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .headerouter {
-  background-color: black;
-  color: white;
   width: 100%;
   font-size: 18px;
 }
@@ -16,4 +37,53 @@
   background-image: url("./images/title-background.png");
   background-position: center top;
   background-repeat: no-repeat;
+}
+
+.storefront {
+	border: 0;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	background-color: lightgray;
+	color: black;
+	width: 90%;
+	justify-items: center;
+	align-items: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas:
+		"instructions instructions instructions"
+		"  inventory     buttons     purchases"
+		" description    buttons      summary";
+	grid-gap: 5px;
+}
+
+.instructions {
+	grid-area: instructions;
+	background-color: lightblue;
+}
+
+.inventory {
+	grid-area: inventory;
+	background-color: white;
+}
+
+.description {
+	grid-area: description;
+	background-color: lightgreen;
+}
+
+.buttons {
+	grid-area: buttons;
+	background-color: darkgrey;
+}
+
+.purchases {
+	grid-area: purchases;
+	background-color: white;
+}
+
+.summary {
+	grid-area: summary;
+	background-color: lightgreen;
 }
