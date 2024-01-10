@@ -1,0 +1,144 @@
+ID,NAME,PRICE,WEIGHT,CATEGORY,SOURCE
+1,MELEE WEAPONS,-1,-1,W,C
+2,  Axes,-2,-2,W,C
+3,    Hand Axe,4,5,W,C
+4,    Battle Axe,7,7,W,C
+5,    Great Axe,14,15,W,C
+6,    Pickaxe (Military Pick),6,4,W,E
+7, ,8,6,W,E
+8,  Daggers,-1,-1,W,E
+9,    Dagger,2,1,W,E
+10,    Defending Dagger,7,2,W,E
+11,    Silver Dagger,25,1,W,E
+12,  Swords,-1,-1,W,E
+13,    Shortsword / Cutlass,6,3,W,E
+14,    Longsword / Scimitar,10,4,W,E
+15,    Two-Handed Sword,18,10,W,E
+16,  Hammers and Maces,-1,-1,W,E
+17,    Warhammer,4,6,W,E
+18,    Light Mace,5,5,W,E
+19,    Mace,6,10,W,E
+20,    Morningstar,7,7,W,E
+21,    Maul / Great Mace,10,16,W,E
+22,  Spears and Polearms,-1,-1,W,E
+23,    Spear,5,5,W,E
+24,    Fork/Trident (E),6,5,W,E
+25,    Boar Spear,6,5,W,E
+26,    Lance,10,10,W,E
+27,    Quarterstaff,2,4,W,E
+28,    Polearm,9,15,W,E
+29,  Chain and Flail,-1,-1,W,E
+30,    Chain,9,3,W,E
+31,    Flail,8,6,W,E
+32,    Great Flail,12,15,W,E
+33,    Whip,3,2,W,E
+34,  Other Weapons,-1,-1,W,E
+35,    Club,2,1,W,E
+36,    Cudgel,2,2,W,E
+37,    Walking Staff,2,3,W,E
+38,    Silver Walking Stick / Staff,4,1,W,E
+39,    Greatclub,3,8,W,E
+40,    Sap / Blackjack**,1,1,W,E
+41,    Hook,0.6,1,W,E
+42,    Sickle,2,2,W,E
+43,    Scythe,7,10,W,E
+44,  Improvised Weapons,-1,-1,W,E
+45,    Spade,2,4,W,E
+46,    Pitchfork,1,3,W,E
+47,  Brawling,-1,-1,W,E
+48,    Cestus / Spiked Gauntlet,1,2,W,E
+49,RANGED WEAPONS,-1,-1,W,E
+50,  Bows,-2,-2,W,E
+51,    Shortbow,25,2,W,E
+52,      Shortbow Arrow,0.1,0.1,W,E
+53,      Silver Shortbow Arrow,2,0.1,W,E
+54,    Longbow,60,3,W,E
+55,      Longbow Arrow,0.2,0.1,W,E
+56,      Silver Longbow Arrow,4,0.1,W,E
+57,    Light Crossbow,30,7,W,E
+58,      Light Quarrel,0.2,0.1,W,E
+59,      Silver Light Quarrel,5,0.1,W,E
+60,    Heavy Crossbow,50,14,W,E
+61,      Heavy Quarrel,0.4,0.1,W,E
+62,      Silver Heavy Quarrel,10,0.1,W,E
+63,    Hand Crossbow,150,3,W,E
+64,      Hand Quarrel,0.2,0.1,W,E
+65,      Silver Hand Quarrel,5,0.1,W,E
+66,    Bullet Crossbow,30,7,W,E
+67,  Slings and Hurled Weapons,-1,-1,W,E
+68,    Sling,1,0.1,W,E
+69,      Bullet,0.1,0.1,W,E
+70,      Stone,0,0.1,W,E
+71,      Silver Bullet,1,0.1,W,E
+72,    Bola (E),2,2,W,E
+73,    Dart,1,0.1,W,E
+74,    Throwing Blade,1,0.5,W,E
+75,    Javelin,1,2,W,E
+76,    Blowgun,2,2,W,E
+77,      Blowgun Dart,0.1,0.1,W,E
+78,    Net (E),20,5,W,E
+79,ARMOR,-1,-1,A,E
+80,  Leather Armor,20,15,A,E
+81,  Chain Mail,60,40,A,E
+82,,,,A,E
+,,,,A,E
+,,,,A,E
+,,,,A,E
+,,,,A,E
+,,,,A,E
+,,,,A,E
+,,,,A,E
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,BEASTS OF BURDEN,-1,-1,B,C
+,  Horse (Draft),120,-1,B,C
+,  Horse (Riding),75,-1,B,C
+,  Horse (War),200,-1,B,C
+,VEHICLES,-1,-1,V,C
+,  Chariot,400,-1,V,C
+,  Coach,1500,-1,V,C
+,,,,,
+,GENERAL ITEMS,-1,-1,G,C
+,  Backpack (Standard or Halfling),4,0.1,G,C
+,  Belt Pouch,1,0.1,G,C
+,  Bit and bridle,1.5,3,G,C
+,  Candles (12),1,0.1,G,C
+,  Chalk (small bag of pieces),2,0.1,G,C
+,  Cloak,2,1,G,C
+,  Clothing (common outfit),4,1,G,C
+,  Glass bottle or vial,1,0.1,G,C
+,  Grappling Hook,2,4,G,C
+,  Holy Symbol,5,0.1,G,C
+,  Holy Water (Per vial),10,0.1,G,C
+,  Horseshoes & shoeing,1,10,G,C
+,  Ink (per jar),8,0.5,G,C
+,  Iron Spikes (12),1,1,G,C
+,  Ladder (10 ft.),1,20,G,C
+,  Lantern,5,2,G,C
+,  Lantern (Bullseye),14,3,G,C
+,  Lantern 9Hooded),8,2,G,C
+,  Manacles (without padlock),6,4,G,C
+,  Map or scroll case,1,0.5,G,C
+,  Mirror (small metal),7,0.1,G,C
+,  Oil (per flask),1,1,G,C
+,  Padlock (with 2 keys),12,1,G,C

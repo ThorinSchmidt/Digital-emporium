@@ -60,30 +60,30 @@ hr {
 
 .instructions {
 	grid-area: instructions;
-	background-color: lightblue;
+
 }
 
 .inventory {
 	grid-area: inventory;
-	background-color: white;
+
 }
 
 .description {
 	grid-area: description;
-	background-color: lightgreen;
+
 }
 
 .buttons {
 	grid-area: buttons;
-	background-color: darkgrey;
+
 }
 
 .purchases {
 	grid-area: purchases;
-	background-color: white;
+
 }
 
 .summary {
 	grid-area: summary;
-	background-color: lightgreen;
+
 }

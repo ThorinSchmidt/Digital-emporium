@@ -14,6 +14,8 @@
 		<div class="storefront c">
 			<div class="instructions">
 				<h2>Instructions</h2>
+				<input type="checkbox" id="core" name="core" value="core">
+				<label for="core"> Use only Core Rules </label><br>
 			</div>
 
 			<div class="inventory">
@@ -46,6 +48,25 @@
 		<div class="footer">
 			<h1>FOOTER</h1>
 		</div>
+		
+		<script>
+			const inv = [[  1, "MELEE WEAPONS              ", -1, -1, "W", "C"],
+                        [  2, "  Axes                     ", -2, -2, "W", "C"],
+                        [  3, "    Hand Axe               ",  4,  5, "W", "C"],
+                        [  4, "    Battle Axe             ",  7,  7, "W", "C"],
+                        [  5, "    Great Axe              ", 14, 15, "W", "C"],
+                        [  6, "    Pickaxe (Military Pick)",  6,  4, "W", "E"],
+                        [  7, "                           ",  8,  6, "W", "E"],
+                        [  8, "  Daggers                  ", -1, -1, "W", "E"],
+                        [  9, "    Dagger                 ",  2,  1, "W", "E"],
+                        [ 10, "    Defending Dagger       ",  7,  2, "W", "E"],
+                        [ 11, "    Silver Dagger          ", 25,  1, "W", "E"],
+                        [ 12, "  Swords                   ", -1, -1, "W", "E"],
+                        [ 13, "    Shortsword / Cutlass   ",  6,  3, "W", "E"],
+                        [ 14, "    Longsword / Scimitar   ", 10,  4, "W", "E"]];
+
+			console.log(inv[0]);
+		</script>
 		
 	</body>
 
