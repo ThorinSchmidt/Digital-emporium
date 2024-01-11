@@ -1,4 +1,4 @@
-
+/*ELEMENTS*/
 body {
 	background-color: black;
 	color: white;
@@ -16,30 +16,56 @@ hr {
 	border-top: 3px solid black;
 }
 
+/*IDs*/
+#left {
+	grid-area: left;
+	margin: 0 0 0 0;
+	width: 100%;
+	float : left;
+}
+
+#middle {
+	grid-area: middle;
+	margin: 0 0 0 0;
+	width: 100%;
+}
+
+#right {
+	grid-area: right;
+	margin: 0 0 0 0;
+	width: 100%;
+}
+
+#emporium {
+	float: right;
+}
+/*CLASSES*/
+.soutane {
+	font-family: Soutane, souvenir, southern, arial, helvetica;
+}
+
 .c {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.headerouter {
-  width: 100%;
-  font-size: 18px;
+.header {
+	width: 90%;
+	justify-items: center;
+	align-items: center;
+  	display: grid;
+	margin: auto;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"left middle right";
+	grid-gap: 5px;
 }
 
-.header {
-  width: 66em;
-  height: 202px;
-  margin-top: 0.3em;
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
-  background-image: url("./images/title-background.png");
-  background-position: center top;
-  background-repeat: no-repeat;
-}
+
 
 .storefront {
+	clear: both;
 	border: 0;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
