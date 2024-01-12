@@ -1,6 +1,8 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="./DigitalEmporium.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js">
+		</script>
 	</head>
 	
 	<body class="soutane">
@@ -26,7 +28,8 @@
 			</div>
 
 			<div class="inventory">
-				<table class="fixed_header">
+				<h2>Inventory</h2>
+				<table class="fixed_header" id="inventory">
 					<thead>
 						<tr>
 							<th class="first"> Item Name </th>
@@ -135,16 +138,16 @@
 			</div>
 			
 			<div class="buttons">
-				<button id="add">Add</button>
+				<button id="add">Add Selected</button>
 				<br>
-				<button id="remove">Remove</button>
+				<button id="remove">Remove Selected</button>
 				<br>
-				<button id="clear">Clear</button>
+				<button id="clear">Clear All Selections</button>
 				
 			</div>
 			
 			<div class="purchases">
-				<h2>Purchases</h2>
+				<h2>Selections</h2>
 			</div>
 			
 			<div class="summary">
@@ -156,26 +159,29 @@
 		<div class="footer">
 			<h1>FOOTER</h1>
 		</div>
-		
-		<script>
-			const inv = [[  1, "MELEE WEAPONS              ", -1, -1, "W", "C"],
-                        [  2, "  Axes                     ", -2, -2, "W", "C"],
-                        [  3, "    Hand Axe               ",  4,  5, "W", "C"],
-                        [  4, "    Battle Axe             ",  7,  7, "W", "C"],
-                        [  5, "    Great Axe              ", 14, 15, "W", "C"],
-                        [  6, "    Pickaxe (Military Pick)",  6,  4, "W", "E"],
-                        [  7, "                           ",  8,  6, "W", "E"],
-                        [  8, "  Daggers                  ", -2, -2, "W", "E"],
-                        [  9, "    Dagger                 ",  2,  1, "W", "E"],
-                        [ 10, "    Defending Dagger       ",  7,  2, "W", "E"],
-                        [ 11, "    Silver Dagger          ", 25,  1, "W", "E"],
-                        [ 12, "  Swords                   ", -1, -1, "W", "E"],
-                        [ 13, "    Shortsword / Cutlass   ",  6,  3, "W", "E"],
-                        [ 14, "    Longsword / Scimitar   ", 10,  4, "W", "E"]];
 
-			console.log(inv[0]);
-		</script>
-		
-	</body>
+	</body>		
+	<script>
+		const inv = [[  1, "MELEE WEAPONS              ", -1, -1, "W", "C"],
+					[  2, "  Axes                     ", -2, -2, "W", "C"],
+					[  3, "    Hand Axe               ",  4,  5, "W", "C"],
+					[  4, "    Battle Axe             ",  7,  7, "W", "C"],
+					[  5, "    Great Axe              ", 14, 15, "W", "C"],
+					[  6, "    Pickaxe (Military Pick)",  6,  4, "W", "E"],
+					[  7, "                           ",  8,  6, "W", "E"],
+					[  8, "  Daggers                  ", -2, -2, "W", "E"],
+					[  9, "    Dagger                 ",  2,  1, "W", "E"],
+					[ 10, "    Defending Dagger       ",  7,  2, "W", "E"],
+					[ 11, "    Silver Dagger          ", 25,  1, "W", "E"],
+					[ 12, "  Swords                   ", -1, -1, "W", "E"],
+					[ 13, "    Shortsword / Cutlass   ",  6,  3, "W", "E"],
+					[ 14, "    Longsword / Scimitar   ", 10,  4, "W", "E"]];
+
+		$("#inventory tr").click(function(){
+			$(this).addClass('selected').siblings().removeClass('selected');    
+			//var value=$(this).find('td:first').html();
+			// add item to other table (somehow)
+    	});
+	</script>
 
 </html>
