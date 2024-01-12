@@ -170,12 +170,10 @@ hr {
 	width: 59%;
 }
 
-.fixed_header .second {
-	width: 16%;
-}
-
+.fixed_header .second,
 .fixed_header .third {
 	width: 16%;
+	text-align: right;
 }
 
 .fixed_header td + td {
