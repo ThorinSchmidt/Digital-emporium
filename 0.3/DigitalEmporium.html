@@ -29,7 +29,7 @@
 
 			<div class="inventory">
 				<h2>Inventory</h2>
-				<table class="fixed_header" id="inventory">
+				<table class="inventory_table" id="inventory">
 					<thead>
 						<tr>
 							<th class="first"> Item Name </th>
@@ -124,10 +124,10 @@
 							<td class="third"> 6 </td>
 						</tr>
 <!--					<tr>
-						<td class="first">  </td>
-						<td class="second">  </td>
-						<td class="third">  </td>
-					</tr>
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
 -->	
 					</tbody>
 				</table>
@@ -138,7 +138,7 @@
 			</div>
 			
 			<div class="buttons">
-				<button id="add">Add Selected</button>
+				<button id="add" onclick="add()">Add Selected</button>
 				<br>
 				<button id="remove">Remove Selected</button>
 				<br>
@@ -148,6 +148,129 @@
 			
 			<div class="purchases">
 				<h2>Selections</h2>
+				
+				<table class="selection_table" id="selection">
+					<thead>
+						<tr>
+							<th class="first"> Item Name </th>
+							<th class="second"> Quantity </th>
+							<th class="third"> Cost (GP) </th>
+							<th class="fourth"> Weight </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="category">
+							<td class="first"> MELEE WEAPONS </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Axes </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Hand Axe </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Battle Axe </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Great Axe </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Pickaxe (Military Pick) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mattock (Footman's Pick) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Daggers </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Dagger </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Defending Dagger </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Dagger </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Swords </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Shortsword / Cutlass </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Longsword / Scimitar </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Two-Handed Sword </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>							
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Hammers and Maces </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Warhammer </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+<!--					<tr>
+							<td class="first">  </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+-->	
+					</tbody>
+				</table>
+				
 			</div>
 			
 			<div class="summary">
@@ -162,21 +285,18 @@
 
 	</body>		
 	<script>
-		const inv = [[  1, "MELEE WEAPONS              ", -1, -1, "W", "C"],
-					[  2, "  Axes                     ", -2, -2, "W", "C"],
-					[  3, "    Hand Axe               ",  4,  5, "W", "C"],
-					[  4, "    Battle Axe             ",  7,  7, "W", "C"],
-					[  5, "    Great Axe              ", 14, 15, "W", "C"],
-					[  6, "    Pickaxe (Military Pick)",  6,  4, "W", "E"],
-					[  7, "                           ",  8,  6, "W", "E"],
-					[  8, "  Daggers                  ", -2, -2, "W", "E"],
-					[  9, "    Dagger                 ",  2,  1, "W", "E"],
-					[ 10, "    Defending Dagger       ",  7,  2, "W", "E"],
-					[ 11, "    Silver Dagger          ", 25,  1, "W", "E"],
-					[ 12, "  Swords                   ", -1, -1, "W", "E"],
-					[ 13, "    Shortsword / Cutlass   ",  6,  3, "W", "E"],
-					[ 14, "    Longsword / Scimitar   ", 10,  4, "W", "E"]];
-
+	
+		//"add" item to selections table
+		function add() {
+			var value=$(".selected").find('td:first').html();
+			if(value) {
+				alert(value);
+			} else {
+				alert("no selection");
+			}
+		}
+	
+		// Highlight selected row in inventory table
 		$("#inventory tr").click(function(){
 			$(this).addClass('selected').siblings().removeClass('selected');    
 			//var value=$(this).find('td:first').html();

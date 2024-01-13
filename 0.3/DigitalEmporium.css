@@ -74,7 +74,6 @@ hr {
 	align-items: center;
 	display: grid;
 	grid-template-columns: 45% 5% 5% 45%;
-	grid-template-rows: 1fr 1fr 1fr;
 	grid-template-areas:
 		"instructions instructions instructions instructions"
 		"  inventory     buttons      buttons     purchases "
@@ -119,38 +118,42 @@ hr {
 
 }
 
-/* Table stuff*/
-.fixed_header {
+/********************************************************************
+* inventory_table stuff                                             *
+********************************************************************/
+.inventory_table {
 	width: 100%;
 	table-layout: fixed;
+	border: 2px solid black;
 	border-collapse: collapse;
 	column-gap: 0px;
 
 }
 
-.fixed_header thead {
+.inventory_table thead {
 	background: black;
 	color: white;
 }
 
-.fixed_header tbody {
+.inventory_table tbody {
 	display: block;
+	background-color: white;
 	width: 100%;
 	overflow: auto;
-	height: 200px;
+	height: 300px;
 }
 
-.fixed_header thead tr {
+.inventory_table thead tr {
 	width: 100%;
 	display: block;
 }
 
-.fixed_header tbody tr {
+.inventory_table tbody tr {
 	width: 100%;
 	display: block;
 }
 
-.fixed_header th {
+.inventory_table th {
 	display: inline-block;
 	padding: 0px;
 	padding-top 5px;
@@ -158,7 +161,12 @@ hr {
 	text-align: center;
 }
 
-.fixed_header td {
+.inventory_table tbody tr {
+	background-color: white;
+}
+
+
+.inventory_table td {
 	display: inline-block;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -169,32 +177,121 @@ hr {
 	cursor: pointer;
 }
 
-.fixed_header .first {
-	width: 59%;
+.inventory_table .first {
+	width: 70%;
 }
 
-.fixed_header .second,
-.fixed_header .third {
-	width: 16%;
+.inventory_table .second,
+.inventory_table .third {
+	width: 12%;
 	text-align: right;
 }
 
-.fixed_header td + td {
+.inventory_table td + td {
 	border-left:2px solid black;
 }
 
-.fixed_header .category,
-.fixed_header .category td {
+.inventory_table .category,
+.inventory_table .category td {
 	background-color: darkgray;
 }
 
-.fixed_header .subcategory,
-.fixed_header .subcategory td {
+.inventory_table .subcategory,
+.inventory_table .subcategory td {
 	background-color: gray;
 }
 
-.fixed_header .selected,
-.fixed_header .selected td {
+.inventory_table .selected,
+.inventory_table .selected td {
     background-color: black;
     color: yellow;
+}
+
+/********************************************************************
+* selection_table stuff                                             *
+********************************************************************/
+.selection_table {
+	width: 100%;
+	table-layout: fixed;
+	border: 2px solid black;
+	border-collapse: collapse;
+	column-gap: 0px;
+
+}
+
+.selection_table thead {
+	background: black;
+	color: white;
+}
+
+.selection_table tbody {
+	display: block;
+	background-color: white;
+	width: 100%;
+	overflow: auto;
+	height: 300px;
+}
+
+.selection_table thead tr {
+	width: 100%;
+	display: block;
+}
+
+.selection_table tbody tr {
+	width: 100%;
+	display: block;
+}
+
+.selection_table th {
+	display: inline-block;
+	padding: 0px;
+	padding-top 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.selection_table td {
+	display: inline-block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 0px;
+	padding-left: 5px;
+	background-color: white;
+	text-align: left;
+	cursor: pointer;
+}
+
+.selection_table .first {
+	width: 56%;
+}
+
+.selection_table .second,
+.selection_table .third,
+.selection_table .fourth {
+	width: 12%;
+	text-align: right;
+}
+
+.selection_table td + td {
+	border-left:2px solid black;
+}
+
+.selection_table .category,
+.selection_table .category td {
+	background-color: darkgray;
+}
+
+.selection_table .subcategory,
+.selection_table .subcategory td {
+	background-color: gray;
+}
+
+.selection_table .selected,
+.selection_table .selected td {
+    background-color: black;
+    color: yellow;
+}
+
+.selection_table .hidden {
+	display: none;
 }
