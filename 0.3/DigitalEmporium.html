@@ -286,7 +286,10 @@
 
 	</body>		
 	<script>
-	
+		//globals
+		var selected_row;
+		var is_selected = false;
+		
 		//initialize the selection table
 		$(document).ready(hide_all());
 		
@@ -298,9 +301,10 @@
 	
 		//"add" item to selections table
 		function add() {
-			var value=$(".selected").find('td:first').html();
-			if(value) {
-				alert(value);
+			//selected_row = $(".selected").find('td:first').html();
+			selected_row = $(".selected");
+			if(is_selected) {
+				alert(selected_row).find('td:first').html();
 			} else {
 				alert("no selection");
 			}
@@ -308,7 +312,8 @@
 	
 		// Highlight selected row in inventory table
 		$("#inventory tr").click(function(){
-			$(this).addClass('selected').siblings().removeClass('selected');    
+			$(this).addClass('selected').siblings().removeClass('selected');
+			is_selected = true;
 			//var value=$(this).find('td:first').html();
 			// add item to other table (somehow)
     	});
