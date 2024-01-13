@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="./DigitalEmporium.css">
@@ -142,7 +143,7 @@
 				<br>
 				<button id="remove">Remove Selected</button>
 				<br>
-				<button id="clear">Clear All Selections</button>
+				<button id="clear" onclick="hide_all()">Clear All Selections</button>
 				
 			</div>
 			
@@ -285,6 +286,15 @@
 
 	</body>		
 	<script>
+	
+		//initialize the selection table
+		$(document).ready(hide_all());
+		
+		//set all rows in select_table to class .hidden
+		function hide_all() {
+			//alert("hide all the rows");
+			$("#selection tbody tr").addClass('hidden');
+		}
 	
 		//"add" item to selections table
 		function add() {
