@@ -80,7 +80,7 @@
 							<td class="third"> &nbsp; </td>
 						</tr>
 						<tr>
-							<td class="first"> Dagger </td>
+							<td class="first"> Standard Dagger </td>
 							<td class="second"> 2 </td>
 							<td class="third"> 1 </td>
 						</tr>
@@ -209,7 +209,7 @@
 							<td class="fourth"> &nbsp; </td>
 						</tr>
 						<tr>
-							<td class="first"> Dagger </td>
+							<td class="first"> Standard Dagger </td>
 							<td class="second"> 0 </td>
 							<td class="third"> 0 </td>
 							<td class="fourth"> 0 </td>
@@ -287,24 +287,31 @@
 	</body>		
 	<script>
 		//globals
-		var selected_row;
-		var is_selected = false;
-		
+		var total_cost = 0;
+		var total_weight = 0;
+	
 		//initialize the selection table
 		$(document).ready(hide_all());
 		
 		//set all rows in select_table to class .hidden
 		function hide_all() {
-			//alert("hide all the rows");
 			$("#selection tbody tr").addClass('hidden');
 		}
 	
 		//"add" item to selections table
 		function add() {
-			//selected_row = $(".selected").find('td:first').html();
-			selected_row = $(".selected");
-			if(is_selected) {
-				alert(selected_row).find('td:first').html();
+			let row = $(".selected");
+			let item_name=$(row).find('td:first').html();
+			let item_cost=$(row).find('td:nth-child(2)').html();
+			let item_weight=$(row).find('td:last').html();
+			
+			if(row) {
+				// search the other table for the matching row and display it
+				$("#selection tr:contains('" + item_name + "')").removeClass('hidden');
+				// get the current numeric values
+				// increment them
+				// increment the summary values
+				//alert(`${item_name}, ${item_cost}, ${item_weight}`);
 			} else {
 				alert("no selection");
 			}
@@ -312,8 +319,7 @@
 	
 		// Highlight selected row in inventory table
 		$("#inventory tr").click(function(){
-			$(this).addClass('selected').siblings().removeClass('selected');
-			is_selected = true;
+			$(this).addClass('selected').siblings().removeClass('selected');    
 			//var value=$(this).find('td:first').html();
 			// add item to other table (somehow)
     	});
