@@ -7,6 +7,15 @@ button {
 	width: 6em;
 }
 
+h2 {
+	margin: 3px 0px 1px 0px;
+}
+
+.inventory p,
+.purchases p {
+	margin: 3px 0px 3px 0px;
+}
+
 hr {
 	margin-top: 5px;
 	margin-bottom: 5px;
