@@ -11,9 +11,8 @@ h2 {
 	margin: 3px 0px 1px 0px;
 }
 
-.inventory p,
-.purchases p {
-	margin: 3px 0px 3px 0px;
+.summary h2 {
+	text-align: right;
 }
 
 hr {
@@ -23,6 +22,16 @@ hr {
 	border-top: 3px solid black;
 }
 
+.inventory p,
+.purchases p {
+	margin: 3px 0px 3px 0px;
+}
+
+.summary span{
+	display: inline-block;
+	width: 3em;
+	text-align: right;
+}
 
 /*IDs*/
 #left {
@@ -81,8 +90,9 @@ hr {
 	grid-template-columns: 45% 5% 5% 45%;
 	grid-template-areas:
 		"instructions instructions instructions instructions"
-		"  inventory     buttons      buttons     purchases "
-		" description  description    summary      summary  ";
+		" inventory     buttons      buttons     purchases "
+		"description  description    summary      summary  "
+		"   footer       footer       footer       footer  ";
 	grid-gap: 5px;
 }
 
@@ -119,7 +129,7 @@ hr {
 .footer {
 	background-color: black;
 	color: white;
-	width: 80%;
+	width: 100%;
 
 }
 

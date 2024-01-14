@@ -136,13 +136,12 @@
 							<td class="second">  </td>
 							<td class="third">  </td>
 						</tr>
--->	
-					</tbody>
+-->					</tbody>
 				</table>
 			</div>
 			
 			<div class="description">
-				<h2>Item Description</h2>
+				<h2>Detailed descrption here (someday)</h2>
 			</div>
 			
 			<div class="buttons">
@@ -152,7 +151,6 @@
 				<br>
 				<button id="clear" onclick="clear_selections()">
 					Clear All Selections</button>
-				
 			</div>
 			
 			<div class="purchases">
@@ -280,23 +278,22 @@
 							<td class="third"> 0 </td>
 							<td class="fourth"> 0 </td>
 						</tr>
--->	
-					</tbody>
+-->					</tbody>
 				</table>
 				
 			</div>
 			
 			<div class="summary">
-				<h2>Summary</h2>
+				<h2>Your Grand Totals: <span id="tot_gold"> 0.0 </span> gp,
+					<span id="tot_wt"> 0.0 </span> lbs.</h2>
 			</div>
-			
 		</div>
 		
 		<div class="footer">
 			<h1>FOOTER</h1>
 		</div>
-
 	</body>		
+
 	<script>
 		//globals
 		var summary_cost = 0;
@@ -313,48 +310,43 @@
 			$("#selection tbody tr").find("td:last").html('0');
 			$("#inventory tr").removeClass("selected");
 			$("#selection tr").removeClass("selected");
+			$("#tot_gold").html("0.0");
+			$("#tot_wt").html("0.0");
 		}
 	
 		//"add" item to selections table
 		function add() {
-			let row = $("#inventory .selected");
-			if (!row) {
-				alert('bail');
-				return;
-			}
+			let inv_row = $("#inventory .selected");
 			
-			let item_name = $(row).find('td:first').html();
-			let item_cost = parseFloat($(row).find('td:nth-child(2)').html());
-			let item_weight = parseFloat($(row).find('td:last').html());
+			if(inv_row) {
+				let item_name = $(inv_row).find('td:first').html();
+				let item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
+				let item_weight = parseFloat($(inv_row).find('td:last').html());
 			
-			if(row) {
-				// search the other table for the matching row and display it
-				$("#selection tr:contains('" + item_name + "')").removeClass('hidden');
-				
-				// get the current numeric values
-				let selection_row = $("#selection tr:contains('" + item_name + "')");
 
-				// increment them
-				let item_qty = parseFloat($(selection_row).find('td:nth-child(2)')
-									   .html()) + 1;
-				let item_tot_cost = parseFloat($(selection_row).find('td:nth-child(3)')
-											.html()) + item_cost;
-				let item_tot_wt = parseFloat($(selection_row).find('td:last')
-										   .html()) + item_weight;
+				// search the other table for the matching row and display it
+				let sel_row = $("#selection tr:contains('" + item_name + "')");
+				$(sel_row).removeClass('hidden');
+				
+				// increment the numerics
+				let item_qty = parseFloat($(sel_row).find('td:nth-child(2)')
+										  .html()) + 1;
+				let item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)')
+											   .html()) + item_cost;
+				let item_tot_wt = parseFloat($(sel_row).find('td:last')
+											   .html()) + item_weight;
 				
 				// increment the summary values
 				summary_cost = summary_cost + item_cost;
 				summary_weight = summary_weight + item_weight;
-				//alert(`${item_weight}, ${item_tot_wt}`);
 				
 				//display changes to screen
 				//$('#'+table).find('tr#'+rowId).find('td:eq(colNum)').html(newValue);
-				$(selection_row).find('td:nth-child(2)').html(item_qty);
-				$(selection_row).find('td:nth-child(3)').html(item_tot_cost);
-				$(selection_row).find('td:last').html(item_tot_wt);
-
-			} else {
-				alert("no selection");
+				$(sel_row).find('td:nth-child(2)').html(item_qty);
+				$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
+				$(sel_row).find('td:last').html(item_tot_wt);
+				$("#tot_gold").html(summary_cost);
+				$("#tot_wt").html(summary_weight);
 			}
 		}
 	
@@ -396,6 +388,8 @@
 				$(sel_row).find('td:nth-child(2)').html(item_qty);
 				$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
 				$(sel_row).find('td:last').html(item_tot_wt);
+				$("#tot_gold").html(summary_cost);
+				$("#tot_wt").html(summary_weight);
 
 			}
 		}
