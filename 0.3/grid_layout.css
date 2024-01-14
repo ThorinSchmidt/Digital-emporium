@@ -1,0 +1,98 @@
+/****************************************************************************************
+* grid_layout.css                                                                       *
+* 01/14/2024                                                                            *
+* Thorin M. Schmidt                                                                     *
+****************************************************************************************/
+
+/*IDs*/
+#left {
+	grid-area: left;
+	margin: 0 0 0 0;
+	width: 100%;
+	float : left;
+}
+
+#middle {
+	grid-area: middle;
+	margin: 0 0 0 0;
+	width: 100%;
+}
+
+#right {
+	grid-area: right;
+	margin: 0 0 0 0;
+	width: 100%;
+}
+
+#emporium {
+	float: right;
+}
+
+/*CLASSES*/
+
+.header {
+	width: 100%;
+	background-color: black;
+	color: white;
+	justify-items: center;
+	align-items: center;
+  	display: grid;
+	margin: 0px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"left middle right";
+	grid-gap: 0px;
+}
+
+.storefront {
+	clear: both;
+	border: 0;
+	color: black;
+	width: 90%;
+	justify-items: center;
+	align-items: center;
+	display: grid;
+	grid-template-columns: 45% 5% 5% 45%;
+	grid-template-areas:
+		"instructions instructions instructions instructions"
+		" inventory     buttons      buttons     purchases "
+		"description  description    summary      summary  "
+		"   footer       footer       footer       footer  ";
+	grid-gap: 5px;
+}
+
+.instructions {
+	grid-area: instructions;
+	width: 80%;
+}
+
+.inventory {
+	grid-area: inventory;
+	width: 100%;
+}
+
+.description {
+	grid-area: description;
+	width: 100%;
+}
+
+.buttons {
+	grid-area: buttons;
+}
+
+.purchases {
+	grid-area: purchases;
+	width: 100%;
+}
+
+.summary {
+	grid-area: summary;
+	width: 100%;
+}
+
+.footer {
+	background-color: black;
+	color: white;
+	width: 100%;
+}
+
