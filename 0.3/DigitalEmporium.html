@@ -27,8 +27,8 @@
 					Well Done supplement "Equipment Emporium" by Joe Ludlum, R.Kevin
 					Smoot and Alan Vetter.</p>
 
-				<input type="checkbox" id="core" name="core" value="core">
-				<label for="core"> Use only Core Rules </label><br>
+				<input type="checkbox" class="chkbox" id="core" name="core" onclick="core_only()">
+				<label class="chkbox" for="core"> Use only Core Rules </label><br>
 			</div>
 
 			<div class="inventory">
@@ -298,9 +298,38 @@
 		//globals
 		var summary_cost = 0;
 		var summary_weight = 0;
+		var count = 0;
 	
 		//initialize the selection table numerics to 0, all rows hidden
 		$(document).ready(clear_selections());
+		
+		function core_only() {
+			// Get the checkbox
+			var check_box = document.getElementById("core");
+						
+			if (check_box.checked == true){
+				if (count == 0){
+					alert("This checkbox does nothing!");
+					$("#core").prop( "checked", false );
+				} else if (count == 1) {
+					alert("Nope, still does nothing!");
+					$("#core").prop( "checked", false );
+				} else if (count == 2) {
+					alert("This. Checkbox. Does. Nothing!");
+					$("#core").prop( "checked", false );
+				} else if (count == 3) {
+					alert("It's coming in the next Sprint, OK?\n YEESH!");
+					$("#core").prop( "checked", false );
+				} else if (count == 4) {
+					alert("You think you're really funny, dont you?");
+					$("#core").prop( "checked", false );
+				} else {
+					alert("That'S IT! \n I've had enough!");
+					$(".chkbox").css("display", "none");
+				}
+				count++;
+			}
+		}
 		
 		//set all rows in select_table to class .hidden set numerics t0 0
 		function clear_selections() {
@@ -312,6 +341,7 @@
 			$("#selection tr").removeClass("selected");
 			$("#tot_gold").html("0.0");
 			$("#tot_wt").html("0.0");
+			$("#core").prop( "checked", false );
 		}
 	
 		//"add" item to selections table
