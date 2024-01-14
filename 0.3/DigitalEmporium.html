@@ -6,7 +6,7 @@
 		</script>
 	</head>
 	
-	<body class="soutane">
+	<body>
 		<div class="header">
 			<div id="left">
 				<h3>The</h3>
@@ -23,7 +23,8 @@
 		
 		<div class="storefront c">
 			<div class="instructions">
-				<h2>Instructions</h2>
+				<p>The Digital Emporium is intended as a tool to supplement the Very 
+					Well Done supplement "Equipment Emporium" by </p>
 				<input type="checkbox" id="core" name="core" value="core">
 				<label for="core"> Use only Core Rules </label><br>
 			</div>
@@ -141,9 +142,10 @@
 			<div class="buttons">
 				<button id="add" onclick="add()">Add Selected</button>
 				<br>
-				<button id="remove">Remove Selected</button>
+				<button id="remove" onclick="remove()">Remove Selected</button>
 				<br>
-				<button id="clear" onclick="hide_all()">Clear All Selections</button>
+				<button id="clear" onclick="clear_selections()">
+					Clear All Selections</button>
 				
 			</div>
 			
@@ -290,17 +292,27 @@
 		var summary_cost = 0;
 		var summary_weight = 0;
 	
-		//initialize the selection table
-		$(document).ready(hide_all());
+		//initialize the selection table numerics to 0, all rows hidden
+		$(document).ready(clear_selections());
 		
-		//set all rows in select_table to class .hidden
-		function hide_all() {
+		//set all rows in select_table to class .hidden set numerics t0 0
+		function clear_selections() {
 			$("#selection tbody tr").addClass('hidden');
+			$("#selection tbody tr").find("td:nth-child(2)").html('0');
+			$("#selection tbody tr").find("td:nth-child(3)").html('0');
+			$("#selection tbody tr").find("td:last").html('0');
+			$("#inventory tr").removeClass("selected");
+			$("#selection tr").removeClass("selected");
 		}
 	
 		//"add" item to selections table
 		function add() {
-			let row = $(".selected");
+			let row = $("#inventory .selected");
+			if (!row) {
+				alert('bail');
+				return;
+			}
+			
 			let item_name = $(row).find('td:first').html();
 			let item_cost = parseFloat($(row).find('td:nth-child(2)').html());
 			let item_weight = parseFloat($(row).find('td:last').html());
@@ -313,9 +325,9 @@
 				let selection_row = $("#selection tr:contains('" + item_name + "')");
 
 				// increment them
-				let itm_qty = parseFloat($(selection_row).find('td:nth-child(2)')
+				let item_qty = parseFloat($(selection_row).find('td:nth-child(2)')
 									   .html()) + 1;
-				let itm_tot_cost = parseFloat($(selection_row).find('td:nth-child(3)')
+				let item_tot_cost = parseFloat($(selection_row).find('td:nth-child(3)')
 											.html()) + item_cost;
 				let item_tot_wt = parseFloat($(selection_row).find('td:last')
 										   .html()) + item_weight;
@@ -323,20 +335,81 @@
 				// increment the summary values
 				summary_cost = summary_cost + item_cost;
 				summary_weight = summary_weight + item_weight;
-				alert(`${summary_cost}, ${summary_weight}`);
+				//alert(`${item_weight}, ${item_tot_wt}`);
 				
 				//display changes to screen
+				//$('#'+table).find('tr#'+rowId).find('td:eq(colNum)').html(newValue);
+				$(selection_row).find('td:nth-child(2)').html(item_qty);
+				$(selection_row).find('td:nth-child(3)').html(item_tot_cost);
+				$(selection_row).find('td:last').html(item_tot_wt);
 
 			} else {
 				alert("no selection");
 			}
 		}
 	
+		//"remove" item from selections table
+		function remove() {
+			let sel_row = $("#selection .selected");
+
+			if(sel_row) {
+				//obtain name and numeric data from selection table
+				let item_name = $(sel_row).find('td:first').html();
+				let item_qty = parseFloat($(sel_row).find('td:nth-child(2)').html());
+				let item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)').html());
+				let item_tot_wt = parseFloat($(sel_row).find('td:last').html());
+				const arr = [item_name, item_qty, item_tot_cost, item_tot_wt];
+				
+				// search the other table for the matching row and assign numerics
+				let inv_row = $("#inventory tr:contains('" + item_name + "')");
+				let item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
+				let item_weight = parseFloat($(inv_row).find('td:last').html());
+
+				// decrement the numeric values.
+				item_qty = parseFloat($(sel_row).find('td:nth-child(2)')
+									  .html()) - 1;
+				item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)')
+										   .html()) - item_cost;
+				item_tot_wt = parseFloat($(sel_row).find('td:last')
+										 .html()) - item_weight;
+				
+				//if the quantity is zero, hide the row again.
+				if (item_qty == 0){
+					$(sel_row).addClass('hidden');
+				}
+				
+				// decrement the summary values
+				summary_cost = summary_cost - item_cost;
+				summary_weight = summary_weight - item_weight;
+				
+				//display changes to screen
+				$(sel_row).find('td:nth-child(2)').html(item_qty);
+				$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
+				$(sel_row).find('td:last').html(item_tot_wt);
+
+			}
+		}
+	
 		// Highlight selected row in inventory table
 		$("#inventory tr").click(function(){
-			$(this).addClass('selected').siblings().removeClass('selected');    
-			//var value=$(this).find('td:first').html();
-			// add item to other table (somehow)
+			//bail if the clicked row is a "category" row
+			let test = $(this).find('td:nth-child(2)').html();
+			if (isNaN(parseFloat(test))){
+				return;
+			}
+			$(this).addClass('selected').siblings().removeClass('selected');
+			$("#selection .selected").removeClass('selected');
+    	});
+		
+		// Highlight selected row in selections table
+		$("#selection tr").click(function(){
+			//bail if the clicked row is a "category" row - shouldn't be possible
+			let test = $(this).find('td:nth-child(2)').html();
+			if (isNaN(parseFloat(test))){
+				return;
+			}
+			$(this).addClass('selected').siblings().removeClass('selected');
+			$("#inventory .selected").removeClass('selected');
     	});
 	</script>
 
