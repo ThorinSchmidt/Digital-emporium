@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<Title>BFRPG Digital Emporium</Title>
 		<!--
 		<link rel="stylesheet" href="./styles.css">
 		<link rel="stylesheet" href="./grid_layout.css">
@@ -36,18 +37,20 @@
 				<label class="chkbox" for="core"> Use only Core Rules </label><br>
 			</div>
 
-			<div class="inventory">
+			<div class="inv_instr">
 				<h2>Items for Sale</h2>
 				
 				<p>Select an item below and click "Add Selected" once for each item you
 					wish to "purchase." It will appear in the list on the right.</p>
-					
-				<table class="inventory_table" id="inventory">
+			</div>
+			
+			<div class="inventory">			
+				<table class="inventory_table c" id="inventory">
 					<thead>
 						<tr>
-							<th class="first"> Item Name </th>
-							<th class="second"> Cost (GP) </th>
-							<th class="third"> Weight </th>
+							<th class="first_th"> Item Name </th>
+							<th class="second_th"> Gp </th>
+							<th class="third_th"> Load </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -92,7 +95,7 @@
 							<td class="third"> &nbsp; </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Dagger </td>
+							<td class="first"> Dagger </td>
 							<td class="second"> 2 </td>
 							<td class="third"> 1 </td>
 						</tr>
@@ -142,7 +145,7 @@
 							<td class="third"> 5 </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Mace </td>
+							<td class="first"> Mace </td>
 							<td class="second"> 5 </td>
 							<td class="third"> 10 </td>
 						</tr>
@@ -162,7 +165,7 @@
 							<td class="third"> &nbsp; </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Spear </td>
+							<td class="first"> Spear </td>
 							<td class="second"> 5 </td>
 							<td class="third"> 5 </td>
 						</tr>
@@ -197,12 +200,12 @@
 							<td class="third"> &nbsp; </td>
 						</tr>
 						<tr>
-							<td class="first"> Chain†† </td>
+							<td class="first"> Chain </td>
 							<td class="second"> 9 </td>
 							<td class="third"> 3 </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Flail </td>
+							<td class="first"> Flail </td>
 							<td class="second"> 8 </td>
 							<td class="third"> 6 </td>
 						</tr>
@@ -266,6 +269,351 @@
 							<td class="second"> 1 </td>
 							<td class="third"> 2 </td>
 						</tr>
+						<tr class="category">
+							<td class="first"> RANGED WEAPONS </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Bows </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Shortbow </td>
+							<td class="second"> 25 </td>
+							<td class="third"> 2 </td>
+						</tr>
+						<tr>
+							<td class="first"> Shortbow Arrow </td>
+							<td class="second"> .1 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Shortbow Arrow </td>
+							<td class="second"> 2 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Longbow </td>
+							<td class="second"> 60 </td>
+							<td class="third"> 3 </td>
+						</tr>
+						<tr>
+							<td class="first"> Longbow Arrow </td>
+							<td class="second"> .2 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Longbow Arrow </td>
+							<td class="second"> 4 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Crossbow </td>
+							<td class="second"> 30 </td>
+							<td class="third"> 7 </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Quarrel </td>
+							<td class="second"> .2 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Light Quarrel </td>
+							<td class="second"> 5 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Heavy Crossbow </td>
+							<td class="second"> 50 </td>
+							<td class="third"> 14 </td>
+						</tr>
+						<tr>
+							<td class="first"> Heavy Quarrel </td>
+							<td class="second"> .4 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Heavy Quarrel </td>
+							<td class="second"> 10 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Hand Crossbow </td>
+							<td class="second"> 150 </td>
+							<td class="third"> 3 </td>
+						</tr>
+						<tr>
+							<td class="first"> Hand Quarrel </td>
+							<td class="second"> .2 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Hand Quarrel </td>
+							<td class="second"> 5 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Bullet Crossbow </td>
+							<td class="second"> 30 </td>
+							<td class="third"> 7 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Slings & Hurled Weapons </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Sling </td>
+							<td class="second"> 1 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Sling Bullet </td>
+							<td class="second"> .1 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Sling Stone </td>
+							<td class="second"> 0 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Sling Bullet </td>
+							<td class="second"> 1 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Bola (E) </td>
+							<td class="second"> 2 </td>
+							<td class="third"> 2 </td>
+						</tr>
+						<tr>
+							<td class="first"> Throwing Dart </td>
+							<td class="second"> 1 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Throwing Blade </td>
+							<td class="second"> 1 </td>
+							<td class="third"> .5 </td>
+						</tr>
+						<tr>
+							<td class="first"> Javelin </td>
+							<td class="second"> 1 </td>
+							<td class="third"> 2 </td>
+						</tr>
+						<tr>
+							<td class="first"> Blowgun </td>
+							<td class="second"> 2 </td>
+							<td class="third"> 2 </td>
+						</tr>
+						<tr>
+							<td class="first"> Dart </td>
+							<td class="second"> .1 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr>
+							<td class="first"> Net (E) </td>
+							<td class="second"> 20 </td>
+							<td class="third"> 5 </td>
+						</tr>
+						<tr clas'category">
+							<td class="first"> ARMOR </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Padded or Quilted </td>
+							<td class="second"> 15 </td>
+							<td class="third"> 10 </td>
+						</tr>
+						<tr>
+							<td class="first"> Hide </td>
+							<td class="second"> 10 </td>
+							<td class="third"> 30 </td>
+						</tr>
+						<tr>
+							<td class="first"> Leather </td>
+							<td class="second"> 20 </td>
+							<td class="third"> 15 </td>
+						</tr>
+						<tr>
+							<td class="first"> Studded Leather </td>
+							<td class="second"> 30 </td>
+							<td class="third"> 25 </td>
+						</tr>
+						<tr>
+							<td class="first"> Ring Mail </td>
+							<td class="second"> 25 </td>
+							<td class="third"> 30 </td>
+						</tr>
+						<tr>
+							<td class="first"> Brigandine </td>
+							<td class="second"> 80 </td>
+							<td class="third"> 30 </td>
+						</tr>
+						<tr>
+							<td class="first"> Chain Mail </td>
+							<td class="second"> 60 </td>
+							<td class="third"> 40 </td>
+						</tr>
+						<tr>
+							<td class="first"> Scale Mail </td>
+							<td class="second"> 80 </td>
+							<td class="third"> 55 </td>
+						</tr>
+						<tr>
+							<td class="first"> Splint Mail </td>
+							<td class="second"> 100 </td>
+							<td class="third"> 45 </td>
+						</tr>
+						<tr>
+							<td class="first"> Banded Mail </td>
+							<td class="second"> 200 </td>
+							<td class="third"> 35 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Mail </td>
+							<td class="second"> 300 </td>
+							<td class="third"> 50 </td>
+						</tr>
+						<tr>
+							<td class="first"> Field Plate Mail </td>
+							<td class="second"> 500 </td>
+							<td class="third"> 70 </td>
+						</tr>
+						<tr>
+							<td class="first"> Full Plate Mail </td>
+							<td class="second"> 1500 </td>
+							<td class="third"> 80 </td>
+						</tr>
+						<tr class="category">
+							<td class="first"> SHIELDS </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Buckler </td>
+							<td class="second"> 5 </td>
+							<td class="third"> 2 </td>
+						</tr>
+						<tr>
+							<td class="first"> Medium Shield </td>
+							<td class="second"> 7 </td>
+							<td class="third"> 5 </td>
+						</tr>
+						<tr>
+							<td class="first"> Tower Shield </td>
+							<td class="second"> 15 </td>
+							<td class="third"> 12 </td>
+						</tr>
+						<tr class="category">
+							<td class="first"> Barding </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Dog Armor </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (dog) </td>
+							<td class="second"> 30 </td>
+							<td class="third"> 5 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (dog) </td>
+							<td class="second"> 100 </td>
+							<td class="third"> 8 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Small Mount </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (sm) </td>
+							<td class="second"> 60 </td>
+							<td class="third"> 25 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (sm) </td>
+							<td class="second"> 200 </td>
+							<td class="third"> 40 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (sm) </td>
+							<td class="second"> 600 </td>
+							<td class="third"> 50 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Medium Mount </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (med) </td>
+							<td class="second"> 120 </td>
+							<td class="third"> 50 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (med) </td>
+							<td class="second"> 400 </td>
+							<td class="third"> 80 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (med) </td>
+							<td class="second"> 1200 </td>
+							<td class="third"> 100 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Large Mount </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (lg) </td>
+							<td class="second"> 240 </td>
+							<td class="third"> 100 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (lg) </td>
+							<td class="second"> 800 </td>
+							<td class="third"> 160 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (lg) </td>
+							<td class="second"> 2400 </td>
+							<td class="third"> 200 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Flying Mount </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (fly) </td>
+							<td class="second"> 600 </td>
+							<td class="third"> 50 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (fly) </td>
+							<td class="second"> 2000 </td>
+							<td class="third"> 80 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (fly) </td>
+							<td class="second"> 6000 </td>
+							<td class="third"> 100 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Exotic Mount *DM CALL* </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp </td>
+						</tr>
 <!--
 						<tr>
 							<td class="first">  </td>
@@ -289,20 +637,22 @@
 					Clear All Selections</button>
 			</div>
 			
-			<div class="purchases">
-				<h2>Shopping Basket (or Box, going by the book cover)</h2>
+			<div class="pur_instr">
+				<h2>Shopping Basket</h2>
 				
 				<p>To remove an item, select it in the table below, and click "Remove 
 					Selected". To start over, click "Clear All Selections." Cumulative totals
 					will appear be;ow.</p>
-					
+			</div>
+			
+			<div class="purchases">		
 				<table class="selection_table" id="selection">
 					<thead>
 						<tr>
 							<th class="first"> Item Name </th>
-							<th class="second"> Quantity </th>
-							<th class="third"> Cost (GP) </th>
-							<th class="fourth"> Weight </th>
+							<th class="second"> Qty </th>
+							<th class="third"> Gp </th>
+							<th class="fourth"> Load </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -355,7 +705,7 @@
 							<td class="fourth"> &nbsp; </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Dagger </td>
+							<td class="first"> Dagger </td>
 							<td class="second"> 0 </td>
 							<td class="third"> 0 </td>
 							<td class="fourth"> 0 </td>
@@ -415,7 +765,7 @@
 							<td class="fourth"> 0 </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Mace </td>
+							<td class="first"> Mace </td>
 							<td class="second"> 5 </td>
 							<td class="third"> 10 </td>
 							<td class="fourth"> 0 </td>
@@ -439,7 +789,7 @@
 							<td class="fourth"> 0 </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Spear </td>
+							<td class="first"> Spear </td>
 							<td class="second"> 5 </td>
 							<td class="third"> 5 </td>
 							<td class="fourth"> 0 </td>
@@ -487,7 +837,7 @@
 							<td class="fourth"> 0 </td>
 						</tr>
 						<tr>
-							<td class="first"> Standard Flail </td>
+							<td class="first"> Flail </td>
 							<td class="second"> 0 </td>
 							<td class="third"> 0 </td>
 							<td class="fourth"> 0 </td>
@@ -564,6 +914,419 @@
 							<td class="third"> 0 </td>
 							<td class="fourth"> 0 </td>
 						</tr>
+						<tr class = "category">
+							<td class="first"> Ranged Weapons </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<trclass = "subcategory">
+							<td class="first"> Bows </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Shortbow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Shortbow Arrow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Shortbow Arrow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Longbow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Longbow Arrow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Longbow Arrow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Crossbow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Quarrel </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Light Quarrel </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Heavy Crossbow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Heavy Quarrel </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Heavy Quarrel </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Hand Crossbow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Hand Quarrel </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Hand Quarrel </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Bullet Crossbow </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Slings & Hurled Weapons </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Sling </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Sling Bullet </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Sling Stone </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Silver Sling Bullet </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Bola (E) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Throwing Dart </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Throwing Blade </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Javelin </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Blowgun </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Dart </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Net (E) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr clas'subcategory">
+							<td class="first"> Armor </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Padded or Quilted </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Hide </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Leather </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Studded Leather </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Ring Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Brigandine </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Chain Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Scale Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Splint Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Banded Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Field Plate Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Full Plate Mail </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Shields </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Buckler </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Medium Shield </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Tower Shield </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="category">
+							<td class="first"> Barding </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Dog Armor </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (dog) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (dog) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Small Mount </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (sm) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (sm) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (sm) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Medium Mount </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (med) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (med) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (med) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Large Mount (lg) </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (lg) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (lg) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (lg) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Flying Mount (fly) </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+							<td class="fourth"> &nbsp; </td>
+						</tr>
+						<tr>
+							<td class="first"> Light Barding (fly) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Mail Barding (fly) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr>
+							<td class="first"> Plate Barding (fly) </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
+						<tr class="subcategory">
+							<td class="first"> Exotic Mount *DM CALL* </td>
+							<td class="second"> 0 </td>
+							<td class="third"> 0 </td>
+							<td class="fourth"> 0 </td>
+						</tr>
 <!--					<tr>
 							<td class="first">  </td>
 							<td class="second"> 0 </td>
@@ -593,7 +1356,7 @@
 		var count = 0;
 		var inventory_is_selected = false;
 		var basket_selected = false;
-	
+		
 		//initialize the selection table numerics to 0, all rows hidden
 		$(document).ready(clear_selections());
 		
@@ -680,14 +1443,19 @@
 				
 				if(inv_row) {
 					let item_name = $(inv_row).find('td:first').html();
+					item_name = item_name.trim();
 					let item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
 					item_cost = Math.round(item_cost * 10) / 10;
 					let item_weight = parseFloat($(inv_row).find('td:last').html());
+					item_weight = Math.round(item_weight * 10) / 10;
 
 					// search the other table for the matching row and display it
-					let sel_row = $("#selection tr:contains('" + item_name + "')");
+					//let sel_row = $("#selection tr:contains('" + item_name + "')");
+					let sel_row = $("#selection tr").filter(function() {
+						return $(this).find('td:first').text().trim() === item_name.trim();
+					});
 					$(sel_row).removeClass('hidden');
-					
+										
 					// increment the numerics
 					let item_qty = parseFloat($(sel_row).find('td:nth-child(2)')
 											  .html()) + 1;
@@ -704,6 +1472,7 @@
 					summary_cost = Math.round(summary_cost * 10) / 10;
 
 					summary_weight = summary_weight + item_weight;
+					summary_weight = Math.round(summary_weight * 10) / 10;
 					
 					//display changes to screen
 					$(sel_row).find('td:nth-child(2)').html(item_qty);
@@ -735,6 +1504,7 @@
 					let item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
 					item_cost = Math.round(item_cost * 10) / 10;
 					let item_weight = parseFloat($(inv_row).find('td:last').html());
+					item_weight = Math.round(item_weight * 10) / 10;
 
 					// decrement the numeric values.
 					item_qty = parseFloat($(sel_row).find('td:nth-child(2)').html()) - 1;
@@ -742,6 +1512,7 @@
 												- item_cost;
 					item_tot_cost = Math.round(item_tot_cost * 10) / 10;
 					item_tot_wt = parseFloat($(sel_row).find('td:last').html()) - item_weight;
+					item_tot_wt = Math.round(item_tot_wt * 10) / 10;
 					
 					//if the quantity is zero, hide the row again.
 					if (item_qty == 0){
@@ -754,6 +1525,7 @@
 					summary_cost = Math.round(summary_cost * 10) / 10;
 
 					summary_weight = summary_weight - item_weight;
+					summary_weight = Math.round(summary_weight * 10) / 10;
 					
 					//display changes to screen
 					$(sel_row).find('td:nth-child(2)').html(item_qty);

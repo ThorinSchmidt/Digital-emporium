@@ -90,9 +90,10 @@ hr {
 	grid-template-columns: 45% 5% 5% 45%;
 	grid-template-areas:
 		"instructions instructions instructions instructions"
-		" inventory     buttons      buttons     purchases "
-		"description  description    summary      summary  "
-		"   footer       footer       footer       footer  ";
+		" inv_instr     buttons      buttons     pur_instr  "
+		" inventory     buttons      buttons     purchases  "
+		"description  description    summary      summary   "
+		"   footer       footer       footer       footer   ";
 	grid-gap: 5px;
 }
 
@@ -105,6 +106,16 @@ hr {
 .inventory {
 	grid-area: inventory;
 	width: 100%;
+}
+
+.inv_instr {
+	grid-area: inv_instr;
+	width: 90%;
+}
+
+.pur_instr {
+	grid-area: pur_instr;
+	width: 90%;
 }
 
 .description {
@@ -137,7 +148,7 @@ hr {
 * inventory_table stuff                                             *
 ********************************************************************/
 .inventory_table {
-	width: 100%;
+	width: 400px;
 	table-layout: fixed;
 	border: 2px solid black;
 	border-collapse: collapse;
@@ -170,6 +181,7 @@ hr {
 
 .inventory_table th {
 	display: inline-block;
+	width: 100%;
 	padding: 0px;
 	padding-top 5px;
 	padding-bottom: 5px;
@@ -185,7 +197,7 @@ hr {
 	display: inline-block;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-right: 0px;
+	padding-right: 5px;
 	padding-left: 5px;
 	background-color: white;
 	text-align: left;
@@ -193,13 +205,24 @@ hr {
 }
 
 .inventory_table .first {
-	width: 70%;
+	width: 270px;
 }
 
 .inventory_table .second,
 .inventory_table .third {
-	width: 12%;
+	width: 30px;
 	text-align: right;
+}
+
+.inventory_table .first_th {
+	width: 270px;
+	margin: -5px;
+}
+
+.inventory_table .second_th,
+.inventory_table .third_th {
+	width: 30px;
+	text-align: center;
 }
 
 .inventory_table td + td {
@@ -208,12 +231,12 @@ hr {
 
 .inventory_table .category,
 .inventory_table .category td {
-	background-color: darkgray;
+	background-color: gray; /*gray is darker than darkgray!!*/
 }
 
 .inventory_table .subcategory,
 .inventory_table .subcategory td {
-	background-color: gray;
+	background-color: darkgray; /*gray is darker than darkgray!!*/
 }
 
 .inventory_table .selected,
@@ -293,12 +316,12 @@ hr {
 
 .selection_table .category,
 .selection_table .category td {
-	background-color: darkgray;
+	background-color: gray; /*gray is darker than darkgray!!*/
 }
 
 .selection_table .subcategory,
 .selection_table .subcategory td {
-	background-color: gray;
+	background-color: darkgray; /*gray is darker than darkgray!!*/
 }
 
 .selection_table .selected,
