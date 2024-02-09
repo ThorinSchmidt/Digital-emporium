@@ -242,7 +242,7 @@ hr {
 * selection_table stuff                                             *
 ********************************************************************/
 .selection_table {
-	width: 400px;
+	width: var(--table-width);
 	table-layout: fixed;
 	border: 2px solid black;
 	border-collapse: collapse;
