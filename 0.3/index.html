@@ -737,6 +737,10 @@
 				<br>
 				<button id="clear" onclick="clear_selections()">
 					Clear All Selections</button>
+				<br>
+				<button id="bulk_add" onclick="bulk_add()">Bulk <br> Add </button>
+				<br>
+				<button id="bulk_remove" onclick="bulk_remove()">Bulk Remove </button>
 			</div>
 			
 			<div class="pur_instr">
@@ -1579,7 +1583,7 @@
 		var summary_weight = 0;
 		var count = 0;
 		var inventory_is_selected = false;
-		var basket_selected = false;
+		var basket_is_selected = false;
 		
 		//initialize the selection table numerics to 0, all rows hidden
 		$(document).ready(clear_selections());
@@ -1627,7 +1631,7 @@
 			summary_weight = 0;
 			count = 0;
 			inventory_is_selected = false;
-			basket_selected = false;
+			basket_is_selected = false;
 		}
 
 		// Highlight selected row in inventory table
@@ -1661,103 +1665,175 @@
     	});
 	
 		//"add" item to selections table
-		function add() {
+		function add(inc = 1) {
+			var increment = parseInt(inc);
+			var inv_row;
+			var sel_row;
+			
+			var item_name;
+			var item_cost;
+			var item_weight;
+			var item_qty;
+			var item_tot_cost;
+			var item_tot_wt;
+			
+			//acquire row data through queries
 			if(inventory_is_selected) {
-				let inv_row = $("#inventory .selected");
-				
-				if(inv_row) {
-					let item_name = $(inv_row).find('td:first').html();
-					item_name = item_name.trim();
-					let item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
-					item_cost = Math.round(item_cost * 10) / 10;
-					let item_weight = parseFloat($(inv_row).find('td:last').html());
-					item_weight = Math.round(item_weight * 10) / 10;
-
-					// search the other table for the matching row and display it
-					let sel_row = $("#selection tr").filter(function() {
-						return $(this).find('td:first').text().trim() === item_name.trim();
+				inv_row = $("#inventory .selected");
+				item_name = $(inv_row).find('td:first').html();
+				item_name = item_name.trim();
+				sel_row = $("#selection tr").filter(function() {
+					  return $(this).find('td:first').text().trim() === item_name.trim();
 					});
-					$(sel_row).removeClass('hidden');
-										
-					// increment the numerics
-					let item_qty = parseFloat($(sel_row).find('td:nth-child(2)')
-											  .html()) + 1;
-					let item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)')
-												   .html()) + item_cost;
-					item_tot_cost = Math.round(item_tot_cost * 10) / 10;
-					item_tot_cost = Math.round(item_tot_cost * 10) / 10;
-					let item_tot_wt = parseFloat($(sel_row).find('td:last')
-												   .html()) + item_weight;
-					item_tot_wt = Math.round(item_tot_wt * 10) / 10;
-					
-					// increment the summary values
-					summary_cost = summary_cost + item_cost;
-					summary_cost = Math.round(summary_cost * 10) / 10;
-
-					summary_weight = summary_weight + item_weight;
-					summary_weight = Math.round(summary_weight * 10) / 10;
-					
-					//display changes to screen
-					$(sel_row).find('td:nth-child(2)').html(item_qty);
-					$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
-					$(sel_row).find('td:last').html(item_tot_wt);
-					$("#tot_gold").html(summary_cost);
-					$("#tot_wt").html(summary_weight);
-				}
+				$(sel_row).removeClass('hidden');
+			} else if(basket_is_selected) {
+				sel_row = $("#selection .selected");
+				item_name = $(sel_row).find('td:first').html();
+				item_name = item_name.trim();
+				inv_row = $("#inventory tr").filter(function() {
+					  return $(this).find('td:first').text().trim() === item_name.trim();
+					});
+			} else {
+				// nothing is selected
+				return;
 			}
+				
+			if(inv_row) {
+				item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
+				item_cost = Math.round(item_cost * 10) / 10;
+				item_weight = parseFloat($(inv_row).find('td:last').html());
+				item_weight = Math.round(item_weight * 10) / 10;
+
+				// increment the numerics
+				item_qty = parseFloat($(sel_row).find('td:nth-child(2)')
+									  .html()) + parseInt(increment);
+				item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)')
+										   .html()) + (item_cost * increment);
+				item_tot_wt = parseFloat($(sel_row).find('td:last')
+										 .html()) + (item_weight * increment);
+				// avoid rounding errors
+				item_tot_cost = Math.round(item_tot_cost * 10) / 10;
+				item_tot_wt = Math.round(item_tot_wt * 10) / 10;
+				
+				// increment the summary values
+				summary_cost = summary_cost + (item_cost * increment);
+				summary_weight = summary_weight + (item_weight * increment);
+				
+				// avoid rounding errors
+				summary_cost = Math.round(summary_cost * 10) / 10;
+				summary_weight = Math.round(summary_weight * 10) / 10;
+				
+				//display changes to screen
+				$(sel_row).find('td:nth-child(2)').html(item_qty);
+				$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
+				$(sel_row).find('td:last').html(item_tot_wt);
+				$("#tot_gold").html(summary_cost);
+				$("#tot_wt").html(summary_weight);
+			}
+			
 		}
 	
 		//"remove" item from selections table
-		function remove() {
-			if(basket_is_selected) {
-				let sel_row = $("#selection .selected");
-
-				if(sel_row) {
-					//obtain name and numeric data from selection table
-					let item_name = $(sel_row).find('td:first').html();
-					let item_qty = parseFloat($(sel_row).find('td:nth-child(2)').html());
-					let item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)').html());
-					item_tot_cost = Math.round(item_tot_cost * 10) / 10;
-					let item_tot_wt = parseFloat($(sel_row).find('td:last').html());
-					item_tot_wt = Math.round(item_tot_wt * 10) / 10;
-
-					
-					// search the other table for the matching row and assign numerics
-					let inv_row = $("#inventory tr:contains('" + item_name + "')");
-					let item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
-					item_cost = Math.round(item_cost * 10) / 10;
-					let item_weight = parseFloat($(inv_row).find('td:last').html());
-					item_weight = Math.round(item_weight * 10) / 10;
-
-					// decrement the numeric values.
-					item_qty = parseFloat($(sel_row).find('td:nth-child(2)').html()) - 1;
-					item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)').html()) 
-												- item_cost;
-					item_tot_cost = Math.round(item_tot_cost * 10) / 10;
-					item_tot_wt = parseFloat($(sel_row).find('td:last').html()) - item_weight;
-					item_tot_wt = Math.round(item_tot_wt * 10) / 10;
-					
-					//if the quantity is zero, hide the row again.
-					if (item_qty == 0){
-						$(sel_row).addClass('hidden');
-						basket_is_selected = false;
-					}
-					
-					// decrement the summary values
-					summary_cost = summary_cost - item_cost;
-					summary_cost = Math.round(summary_cost * 10) / 10;
-
-					summary_weight = summary_weight - item_weight;
-					summary_weight = Math.round(summary_weight * 10) / 10;
-					
-					//display changes to screen
-					$(sel_row).find('td:nth-child(2)').html(item_qty);
-					$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
-					$(sel_row).find('td:last').html(item_tot_wt);
-					$("#tot_gold").html(summary_cost);
-					$("#tot_wt").html(summary_weight);
-				}
+		function remove(decrement = 1) {
+			var inv_row;
+			var sel_row;
+			
+			var item_name;
+			var item_cost;
+			var item_weight;
+			var item_qty;
+			var item_tot_cost;
+			var item_tot_wt;
+			
+			if(inventory_is_selected) {
+				inv_row = $("#inventory .selected");
+				item_name = $(inv_row).find('td:first').html();
+				item_name = item_name.trim();
+				sel_row = $("#selection tr").filter(function() {
+					  return $(this).find('td:first').text().trim() === item_name.trim();
+					});
+				$(sel_row).removeClass('hidden');
+			} else if(basket_is_selected) {
+				sel_row = $("#selection .selected");
+				item_name = $(sel_row).find('td:first').html();
+				item_name = item_name.trim();
+				inv_row = $("#inventory tr").filter(function() {
+					  return $(this).find('td:first').text().trim() === item_name.trim();
+					});
+			} else {
+				// nothing is selected
+				return;
 			}
+
+			if(sel_row) {
+				//obtain name and numeric data from selection table
+				item_qty = parseFloat($(sel_row).find('td:nth-child(2)').html());
+				item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)').html());
+				item_tot_cost = Math.round(item_tot_cost * 10) / 10;
+				item_tot_wt = parseFloat($(sel_row).find('td:last').html());
+				item_tot_wt = Math.round(item_tot_wt * 10) / 10;
+
+				// Bail if there are no more of those items in the Basket
+				if (item_qty == 0){
+					alert("You don't have of those in your basket");
+					$(sel_row).addClass('hidden');
+					basket_is_selected = false;
+					return;
+				}
+				
+				// search the other table for the matching row and assign numerics
+				item_cost = parseFloat($(inv_row).find('td:nth-child(2)').html());
+				item_cost = Math.round(item_cost * 10) / 10;
+				item_weight = parseFloat($(inv_row).find('td:last').html());
+				item_weight = Math.round(item_weight * 10) / 10;
+
+				// decrement the numeric values.
+				item_qty = parseFloat($(sel_row).find('td:nth-child(2)').html());
+				
+				//check for negative balance - possible with bulk remove
+				if (item_qty < decrement){
+					decrement = item_qty;
+				}
+				
+				item_qty = item_qty - decrement;
+				item_tot_cost = parseFloat($(sel_row).find('td:nth-child(3)').html()) 
+										   - (item_cost * decrement);
+				item_tot_cost = Math.round(item_tot_cost * 10) / 10;
+				item_tot_wt = parseFloat($(sel_row).find('td:last').html()) 
+										 - (item_weight * decrement);
+				item_tot_wt = Math.round(item_tot_wt * 10) / 10;
+				
+				// if quantity goes to zero, hide the row again
+				if (item_qty == 0){
+					$(sel_row).addClass('hidden');
+					basket_is_selected = false;
+				}
+				
+				// decrement the summary values
+				summary_cost = summary_cost - (item_cost * decrement);
+				summary_cost = Math.round(summary_cost * 10) / 10;
+
+				summary_weight = summary_weight - (item_weight * decrement);
+				summary_weight = Math.round(summary_weight * 10) / 10;
+				
+				//display changes to screen
+				$(sel_row).find('td:nth-child(2)').html(item_qty);
+				$(sel_row).find('td:nth-child(3)').html(item_tot_cost);
+				$(sel_row).find('td:last').html(item_tot_wt);
+				$("#tot_gold").html(summary_cost);
+				$("#tot_wt").html(summary_weight);
+			}
+		}
+
+		//Bulk add and remove function
+		function bulk_add() {
+			let increment = prompt("How many do you want?", 1);
+			add(increment);
+		}
+		
+		function bulk_remove() {
+			let decrement = prompt("How many do you want?", 1);
+			remove(decrement);
 		}
 	</script>
 
