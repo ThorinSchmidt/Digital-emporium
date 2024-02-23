@@ -1674,7 +1674,6 @@
 					item_weight = Math.round(item_weight * 10) / 10;
 
 					// search the other table for the matching row and display it
-					//let sel_row = $("#selection tr:contains('" + item_name + "')");
 					let sel_row = $("#selection tr").filter(function() {
 						return $(this).find('td:first').text().trim() === item_name.trim();
 					});
