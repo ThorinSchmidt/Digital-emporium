@@ -71,6 +71,12 @@ hr {
 	margin-right: auto;
 }
 
+.l {
+	display: inline-block;
+	text-align: left;
+	margin-left: 5px;
+}
+
 .header {
 	width: 100%;
 	padding: 0px 5px 0px 5px;
@@ -208,9 +214,20 @@ hr {
 	text-align: left;
 }
 
-.inventory_table td.first {
+.inventory_table tr.category td.first {
 	width: 298px;
 }
+
+.inventory_table tr.subcategory td.first {
+	width: 288px;
+	padding-left: 10px;
+}
+
+.inventory_table tr.item td.first {
+	width: 278px;
+	padding-left: 20px;
+}
+
 
 .inventory_table td.second,
 .inventory_table td.third {
@@ -230,6 +247,11 @@ hr {
 .inventory_table .subcategory,
 .inventory_table .subcategory td {
 	background-color: darkgray; /*gray is darker than darkgray!!*/
+}
+
+.inventory_table .item,
+.inventory_table .item td {
+	background-color: white;
 }
 
 .inventory_table .selected,
