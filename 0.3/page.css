@@ -228,6 +228,10 @@ hr {
 	padding-left: 20px;
 }
 
+.inventory_table tr.subitem td.first {
+	width: 268px;
+	padding-left: 30px;
+}
 
 .inventory_table td.second,
 .inventory_table td.third {
