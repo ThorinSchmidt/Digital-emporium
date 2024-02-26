@@ -1,5 +1,5 @@
 :root {
-	--table-width: 400px;
+	--table-width: 450px;
 	--inv-name-cat-width: 258px; /* NO PADDING */
 	--inv-name-subcat-width: 248px; /* 10px PADDING */
 	--inv-name-width: 238px; /* 20px PADDING */
@@ -209,12 +209,12 @@ hr {
 }
 
 .inventory_table .first_th {
-	width: 298px;
+	width: 308px;
 }
 
 .inventory_table .second_th,
 .inventory_table .third_th {
-	width: 36px;
+	width: 49px;
 	text-align: center;
 }
 
@@ -229,27 +229,27 @@ hr {
 }
 
 .inventory_table tr.category td.first {
-	width: 298px;
+	width: 308px;
 }
 
 .inventory_table tr.subcategory td.first {
-	width: 288px;
+	width: 308px;
 	padding-left: 10px;
 }
 
 .inventory_table tr.item td.first {
-	width: 278px;
+	width: 308px;
 	padding-left: 20px;
 }
 
 .inventory_table tr.subitem td.first {
-	width: 268px;
+	width: 308px;
 	padding-left: 30px;
 }
 
 .inventory_table td.second,
 .inventory_table td.third {
-	width: 34px;
+	width: 54px;
 	text-align: right;
 }
 
@@ -325,24 +325,31 @@ hr {
 }
 
 .selection_table .first {
-	width: 258px;
+	width: 263px;
 }
 
-.selection_table .second,
+.selection_table .second {
+	width: 40px;
+	text-align: right;
+}	
+	
 .selection_table .third,
 .selection_table .fourth {
-	width: 34px;
+	width: 54px;
 	text-align: right;
 }
 
 .selection_table .first_th {
-	width: 258px;
+	width: 273px;
 }
 
-.selection_table .second_th,
+.selection_table .second_th {
+	width: 30px;
+}
+
 .selection_table .third_th,
 .selection_table .fourth_th {
-	width: 36px;
+	width: 54px;
 	text-align: center;
 }
 

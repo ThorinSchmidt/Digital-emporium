@@ -12,61 +12,207 @@
 		<meta property="og:site_name" content="Basic Fantasy Role-Playing Game"> 
 		<meta property="fb:admins" content="100001184259730"> 
 
-		<script type="text/javascript">(function() {'use strict';function shuffle(arr) {var ci = arr.length,tv,ri;while (0 !== ci) {ri = Math.floor(Math.random() * ci);ci -= 1;tv = arr[ci];arr[ci]=arr[ri];arr[ri]=tv; }return arr;}var oUA = window.navigator.userAgent;Object.defineProperty(window.navigator, 'userAgent', {get: function() {return oUA + ' Agency/98.8.8022.79';}, configurable: true});var tPg = [];if(window.navigator.plugins) {if(window.navigator.plugins.length) {var opgLength = window.navigator.plugins.length, nvPg = window.navigator.plugins;Object.setPrototypeOf(nvPg, Array.prototype);nvPg.length = opgLength;nvPg.forEach(function(k,v) {var plg = {name: k.name, description: k.description, filename: k.filename, version: k.version, length: k.length,item: function(index) {return this[index] ?? null; }, namedItem: function(name) { return this[name] ?? null; } };var tPgLength = k.length; Object.setPrototypeOf(k, Array.prototype); k.length = tPgLength; k.forEach(function(a, b){ plg[b] = plg[a.type] = a; });Object.setPrototypeOf (plg, Plugin.prototype); tPg.push(plg);});}}var pgTI = [{'name':'BlockIt', 'description': 'Block it', 'filename': 'blockit.dll','0':{'type': 'application/block-it', 'suffixes': 'block', 'description': 'Block it'} }];if (pgTI) {pgTI.forEach(function(k, v) {var plg = {name: k.name, description: k.description, filename: k.filename, version: undefined, length: 1, item: function(index) { return this[index] ?? null; },namedItem: function(name) { return this[name] ?? null; } };var plgMt = {description: k[0].description, suffixes: k[0].suffixes, type: k[0].type, enabledPlugin: null}; Object.setPrototypeOf(plgMt, MimeType.prototype); plg[0] = plg[plgMt.type] = plgMt;Object.setPrototypeOf(plg, Plugin.prototype); tPg.push(plg);});}var fPgI = {length: tPg.length, item: function(index) {return this[index] ?? null; }, namedItem: function(name) {return this[name] ?? null; }, refresh: function() {} };tPg = shuffle(tPg);tPg.forEach(function(k,v) { fPgI[v] = fPgI[k.name] = k; });Object.setPrototypeOf(fPgI, PluginArray.prototype);Object.defineProperty(window.navigator, 'plugins', {get: function() { return fPgI; }, enumerable: true, configurable: true});})();</script>
-		<script src="./Basic Fantasy Role-Playing Game_files/prototype.js.download" type="text/javascript"></script>
-		<script src="./Basic Fantasy Role-Playing Game_files/scriptaculous.js.download" type="text/javascript"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/builder.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/effects.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/dragdrop.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/controls.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/slider.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/sound.js.download"></script>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			(function() {
+				'use strict';
+				function shuffle(arr) {
+					var ci = arr.length,tv,ri;
+					while (0 !== ci) {
+						ri = Math.floor(Math.random() * ci);
+						ci -= 1;tv = arr[ci];
+						arr[ci]=arr[ri];
+						arr[ri]=tv;
+					}
+					return arr;
+				}
+				var oUA = window.navigator.userAgent;
+				Object.defineProperty(window.navigator, 'userAgent', {
+					get: function() {
+						return oUA + ' Agency/98.8.8022.79';
+					}
+					,configurable: true
+				});
+				var tPg = [];
+				if(window.navigator.plugins) {
+					if(window.navigator.plugins.length) {
+						var opgLength = window.navigator.plugins.length,
+							nvPg = window.navigator.plugins;
+						Object.setPrototypeOf(nvPg, Array.prototype);
+						nvPg.length = opgLength;
+						nvPg.forEach(function(k,v) {
+							var plg = {
+								name: k.name, 
+								description: k.description, 
+								filename: k.filename, 
+								version: k.version, 
+								length: k.length,
+								item: function(index) {
+									return this[index] ?? null;
+									}, 
+								namedItem: function(name) {
+									return this[name] ?? null;
+								}
+							};
+							var tPgLength = k.length;
+							Object.setPrototypeOf(k, Array.prototype);
+							k.length = tPgLength; 
+							k.forEach(function(a, b){ 
+								plg[b] = plg[a.type] = a;
+							});
+							Object.setPrototypeOf (plg, Plugin.prototype);
+							tPg.push(plg);
+						});
+					}
+				}
+				var pgTI = [{
+					'name':'BlockIt', 
+					'description': 'Block it', 
+					'filename': 'blockit.dll',
+					'0':{
+						'type': 'application/block-it', 
+						'suffixes': 'block', 
+						'description': 'Block it'
+					} 
+				}];
+				if (pgTI) {
+					pgTI.forEach(function(k, v) {
+						var plg = {
+							name: k.name, 
+							description: k.description, 
+							filename: k.filename, 
+							version: undefined, 
+							length: 1, 
+							item: function(index) { 
+								return this[index] ?? null;
+							},
+							namedItem: function(name) { 
+								return this[name] ?? null; 
+							} 
+						};
+						var plgMt = {
+							description: k[0].description, 
+							suffixes: k[0].suffixes, 
+							type: k[0].type, 
+							enabledPlugin: null
+						}; 
+						Object.setPrototypeOf(plgMt, MimeType.prototype); 
+						plg[0] = plg[plgMt.type] = plgMt;
+						Object.setPrototypeOf(plg, Plugin.prototype);
+						tPg.push(plg);
+					});
+				}
+				var fPgI = {
+					length: tPg.length, 
+					item: function(index) {
+						return this[index] ?? null; 
+					}, 
+					namedItem: function(name) {
+						return this[name] ?? null; 
+					}, 
+					refresh: function() {} 
+				};
+				tPg = shuffle(tPg);
+				tPg.forEach(function(k,v) { 
+					fPgI[v] = fPgI[k.name] = k; 
+				});
+				Object.setPrototypeOf(fPgI, PluginArray.prototype);
+				Object.defineProperty(window.navigator, 'plugins', {
+					get: function() { 
+						return fPgI; 
+					}, 
+					enumerable: true, 
+					configurable: true
+				});
+			})
+			();
+		</script>
+		<script src="./Basic Fantasy Role-Playing Game_files/prototype.js.download" 
+			type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/scriptaculous.js.download" 
+			type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/builder.js.download"
+			type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/effects.js.download"
+			 type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/dragdrop.js.download"
+			type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/controls.js.download"
+			type="text/javascript" ></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/slider.js.download"
+			type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/sound.js.download"
+			type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-latest.min.js"
+			type="text/javascript"></script>
 		
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://basicfantasy.org/rss.xml">
+		<link rel="alternate" type="application/rss+xml" title="RSS"
+			href="https://basicfantasy.org/rss.xml">
 		<link rel="stylesheet" href="./normalize.css" type="text/css">
 		<link rel="stylesheet" href="./stylesheet.css" type="text/css">
 		<link rel="stylesheet" href="./base.css" type="text/css">
-		<link rel="stylesheet" href="./page.css">
+		<link rel="stylesheet" href="./emporium.css">
 		<link rel="shortcut icon" href="https://www.basicfantasy.org/favicon.ico">
 
-		<style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style>
+		<style>
+			:is([id*='google_ads_iframe'],
+				[id*='taboola-'],
+				.taboolaHeight,
+				.taboola-placeholder,
+				#credential_picker_container,
+				#credentials-picker-container,
+				#credential_picker_iframe,
+				[id*='google-one-tap-iframe'],
+				#google-one-tap-popup-container,
+				.google-one-tap-modal-div,
+				#amp_floatingAdDiv,
+				#ez-content-blocker-container){
+					display:none!important;
+					min-height:0!important;
+					height:0!important;
+				}
+		</style>
 	</head>
 	
 	<body>
 		<!-- Website header -->
 		<div id="topboxouter">
-		  <div id="topbox">
-			<span class="soutane" style="display: inline-block; text-align: center; font-size: 120%;">
-			<a href="https://www.basicfantasy.org/index.html">
-			<img border="0" src="./images/title-foreground.png"></a>
-			</span>
-
-			<div id="download-buttons">
-			<a href="https://www.basicfantasy.org/downloads.html" class="blue-shiny-button">
-			<strong>Download the Rules</strong><br>Free download in source
-			and PDF formats</a>
-
-			<br>
-			<a href="https://www.basicfantasy.org/buytherules.html" class="green-shiny-button" style="margin-top: 8px; margin-bottom: 8px;">
-			<strong>Buy the Rules</strong><br>Available in hard and soft
-			cover at cost</a>
-
-			<br>
-			<b>Core Rules 4thEd R137 -- September 13, 2023</b>
+			<div id="topbox">
+				<span class="soutane" style="display: inline-block; 
+											text-align: center; 
+											font-size: 120%;">
+					<a href="https://www.basicfantasy.org/index.html">
+					<img border="0" src="./images/title-foreground.png"></a>
+				</span>
+				<div id="download-buttons">
+					<a href="https://www.basicfantasy.org/downloads.html" 
+						class="blue-shiny-button">
+					<strong>Download the Rules</strong><br>Free download in source
+					and PDF formats</a>
+					<br>
+					<a href="https://www.basicfantasy.org/buytherules.html" 
+						class="green-shiny-button" style="margin-top: 8px; 
+														margin-bottom: 8px;">
+					<strong>Buy the Rules</strong><br>Available in hard and soft
+					cover at cost</a>
+					<br>
+					<b>Core Rules 4thEd R137 -- September 13, 2023</b>
+				</div>
 			</div>
-		  </div>
-
-		  <div id="menubarframe">
-			<ul id="menubar">
-				<li><a href="https://www.basicfantasy.org/index.html" class="navbutton">Home</a></li>
-				<li><a href="https://www.basicfantasy.org/downloads.html" class="navbutton">Downloads</a></li>
-				<li><a href="https://www.basicfantasy.org/showcase.cgi" class="navbutton">Showcase</a></li>
-				<li><a href="https://www.basicfantasy.org/srd" class="navbutton">SRD</a></li>
-				<li><a href="https://www.basicfantasy.org/introstory.html" class="navbutton">Intro Story</a></li>
-				<li><a href="https://www.basicfantasy.org/news.html" class="navbutton">News</a></li>
-				<li><a href="https://www.basicfantasy.org/tools.html" class="navbutton">Tools</a></li>
-				<li><a href="https://www.basicfantasy.org/contact.html" class="navbutton">Contact Us</a></li>
-				<li><a href="https://www.basicfantasy.org/blog" class="navbutton">Blog</a></li>
-				<li><a href="https://www.basicfantasy.org/forums" class="navbutton">Forums</a></li>
-			</ul>
-		  </div>
+			<div id="menubarframe">
+				<ul id="menubar">
+					<li><a href="https://www.basicfantasy.org/index.html" class="navbutton">Home</a></li>
+					<li><a href="https://www.basicfantasy.org/downloads.html" class="navbutton">Downloads</a></li>
+					<li><a href="https://www.basicfantasy.org/showcase.cgi" class="navbutton">Showcase</a></li>
+					<li><a href="https://www.basicfantasy.org/srd" class="navbutton">SRD</a></li>
+					<li><a href="https://www.basicfantasy.org/introstory.html" class="navbutton">Intro Story</a></li>
+					<li><a href="https://www.basicfantasy.org/news.html" class="navbutton">News</a></li>
+					<li><a href="https://www.basicfantasy.org/tools.html" class="navbutton">Tools</a></li>
+					<li><a href="https://www.basicfantasy.org/contact.html" class="navbutton">Contact Us</a></li>
+					<li><a href="https://www.basicfantasy.org/blog" class="navbutton">Blog</a></li>
+					<li><a href="https://www.basicfantasy.org/forums" class="navbutton">Forums</a></li>
+				</ul>
+			</div>
 		</div>
-
 		<div class="header">
 			<div id="left">
 				<p>The <br>
@@ -81,7 +227,6 @@
 					Smoot and Alan Vetter.</p>
 			</div>
 		</div>
-	
 		<div class="storefront c">
 			<div class="filters">
 				<hr>
@@ -92,15 +237,12 @@
 				<br>
 				<hr>
 			</div>
-
 			<div class="inv_instr">
 				<h2>Items for Sale</h2>
-				
 				<p>Select an item below and click "Add Selected" (or "Bulk Add") once 
 					for each item you wish to "purchase." It will appear in the list on
 					the right.</p>
 			</div>
-
 			<div class="inventory">			
 				<table class="inventory_table c" id="inventory">
 					<thead>
@@ -1640,87 +1782,6 @@
 							<td class="third"> 3 </td>
 						</tr>
 						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) poor </td>
-							<td class="second"> 5 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) fair </td>
-							<td class="second"> 10 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) good </td>
-							<td class="second"> 15 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) very good </td>
-							<td class="second"> 20 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) fine </td>
-							<td class="second"> 25 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) very fine </td>
-							<td class="second"> 30 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) high </td>
-							<td class="second"> 35 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) noble </td>
-							<td class="second"> 40 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) royal </td>
-							<td class="second"> 45 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) dragon </td>
-							<td class="second"> 50 </td>
-							<td class="third"> .1 </td>
-						</tr>
-						
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones - clay </td>
-							<td class="second"> .1 </td>
-							<td class="third"> .01 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones - wood </td>
-							<td class="second"> 3 </td>
-							<td class="third"> .01 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones - ivory </td>
-							<td class="second"> 5 </td>
-							<td class="third"> .01 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones, loaded - clay </td>
-							<td class="second"> 10.1 </td>
-							<td class="third"> .01 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones, loaded - wood </td>
-							<td class="second"> 13 </td>
-							<td class="third"> .01 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones, loaded - ivory </td>
-							<td class="second"> 15 </td>
-							<td class="third"> .01 </td>
-						</tr>
-						<tr class="item ee">
 							<td class="first"> Juggling balls or pins – set of 3 </td>
 							<td class="second"> 4 </td>
 							<td class="third"> 3 </td>
@@ -2504,6 +2565,106 @@
 							<td class="first"> Mittens </td>
 							<td class="second"> .3 </td>
 							<td class="third"> .01 </td>
+						</tr>
+						<tr class="category ee">
+							<td class="first"> STORAGE & CONTAINERS </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="subcategory ee">
+							<td class="first"> Containers </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first"> Basket, large </td>
+							<td class="second"> .3 </td>
+							<td class="third"> 1 </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first"> Basket, small </td>
+							<td class="second"> .05 </td>
+							<td class="third"> .1 </td>
+						</tr>
+						<tr class="subcategory ee">
+							<td class="first"> Chests </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first"> Small </td>
+							<td class="second"> 2 </td>
+							<td class="third"> 25 </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first"> Small Strongbox </td>
+							<td class="second"> 25 </td>
+							<td class="third"> 35 </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first"> Medium </td>
+							<td class="second"> 5 </td>
+							<td class="third"> 51 </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first"> Large </td>
+							<td class="second"> 10 </td>
+							<td class="third"> 75 </td>
+						</tr>
+						<tr class="category ee">
+							<td class="first"> Hidden Compartment </td>
+							<td class="second"> +40 </td>
+							<td class="third"> - </td>
+						</tr>
+						<tr class="category ee">
+							<td class="first"> Traveling Chest </td>
+							<td class="second"> +100 </td>
+							<td class="third"> -10 </td>
+						</tr>
+						<tr class="subcategory ee">
+							<td class="first"> Crates </td>
+							<td class="second"> &nbsp; </td>
+							<td class="third"> &nbsp; </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
+						</tr>
+						<tr class="item ee">
+							<td class="first">  </td>
+							<td class="second">  </td>
+							<td class="third">  </td>
 						</tr>
 						
 <!-- mark               
@@ -4345,102 +4506,6 @@
 							<td class="first"> Chess set </td>
 							<td class="second"> 5 </td>
 							<td class="third"> 3 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) poor </td>
-							<td class="second"> 5 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) fair </td>
-							<td class="second"> 10 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) good </td>
-							<td class="second"> 15 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) very good </td>
-							<td class="second"> 20 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) fine </td>
-							<td class="second"> 25 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) very fine </td>
-							<td class="second"> 30 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) high </td>
-							<td class="second"> 35 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) noble </td>
-							<td class="second"> 40 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) royal </td>
-							<td class="second"> 45 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Deck of Cards (Game, Tarot) dragon </td>
-							<td class="second"> 50 </td>
-							<td class="third"> .1 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones - clay </td>
-							<td class="second"> .1 </td>
-							<td class="third"> .01 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones - wood </td>
-							<td class="second"> 3 </td>
-							<td class="third"> .01 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones - ivory </td>
-							<td class="second"> 5 </td>
-							<td class="third"> .01 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones, loaded - clay </td>
-							<td class="second"> 10.1 </td>
-							<td class="third"> .01 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones, loaded - wood </td>
-							<td class="second"> 13 </td>
-							<td class="third"> .01 </td>
-							<td class="fourth"> 0 </td>
-						</tr>
-						<tr class="item ee">
-							<td class="first"> Dice / Knucklebones, loaded - ivory </td>
-							<td class="second"> 15 </td>
-							<td class="third"> .01 </td>
 							<td class="fourth"> 0 </td>
 						</tr>
 						<tr class="item ee">
