@@ -1,40 +1,96 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<Title>BFRPG Digital Emporium</Title>
-		<!--
-		<link rel="stylesheet" href="./styles.css">
-		<link rel="stylesheet" href="./grid_layout.css">
-		<link rel="stylesheet" href="./tables.css">
-		-->
+		<title>Basic Fantasy Role-Playing Game</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<!-- Open Graph stuff to make Facebook happy -->
+		<meta property="og:title" content="Basic Fantasy Role-Playing Game"> 
+		<meta property="og:type" content="game"> 
+		<meta property="og:image" content="https://basicfantasy.org/images/sitecover.jpg"> 
+		<meta property="og:url" content="https://www.basicfantasy.org"> 
+		<meta property="og:site_name" content="Basic Fantasy Role-Playing Game"> 
+		<meta property="fb:admins" content="100001184259730"> 
+
+		<script type="text/javascript">(function() {'use strict';function shuffle(arr) {var ci = arr.length,tv,ri;while (0 !== ci) {ri = Math.floor(Math.random() * ci);ci -= 1;tv = arr[ci];arr[ci]=arr[ri];arr[ri]=tv; }return arr;}var oUA = window.navigator.userAgent;Object.defineProperty(window.navigator, 'userAgent', {get: function() {return oUA + ' Agency/98.8.8022.79';}, configurable: true});var tPg = [];if(window.navigator.plugins) {if(window.navigator.plugins.length) {var opgLength = window.navigator.plugins.length, nvPg = window.navigator.plugins;Object.setPrototypeOf(nvPg, Array.prototype);nvPg.length = opgLength;nvPg.forEach(function(k,v) {var plg = {name: k.name, description: k.description, filename: k.filename, version: k.version, length: k.length,item: function(index) {return this[index] ?? null; }, namedItem: function(name) { return this[name] ?? null; } };var tPgLength = k.length; Object.setPrototypeOf(k, Array.prototype); k.length = tPgLength; k.forEach(function(a, b){ plg[b] = plg[a.type] = a; });Object.setPrototypeOf (plg, Plugin.prototype); tPg.push(plg);});}}var pgTI = [{'name':'BlockIt', 'description': 'Block it', 'filename': 'blockit.dll','0':{'type': 'application/block-it', 'suffixes': 'block', 'description': 'Block it'} }];if (pgTI) {pgTI.forEach(function(k, v) {var plg = {name: k.name, description: k.description, filename: k.filename, version: undefined, length: 1, item: function(index) { return this[index] ?? null; },namedItem: function(name) { return this[name] ?? null; } };var plgMt = {description: k[0].description, suffixes: k[0].suffixes, type: k[0].type, enabledPlugin: null}; Object.setPrototypeOf(plgMt, MimeType.prototype); plg[0] = plg[plgMt.type] = plgMt;Object.setPrototypeOf(plg, Plugin.prototype); tPg.push(plg);});}var fPgI = {length: tPg.length, item: function(index) {return this[index] ?? null; }, namedItem: function(name) {return this[name] ?? null; }, refresh: function() {} };tPg = shuffle(tPg);tPg.forEach(function(k,v) { fPgI[v] = fPgI[k.name] = k; });Object.setPrototypeOf(fPgI, PluginArray.prototype);Object.defineProperty(window.navigator, 'plugins', {get: function() { return fPgI; }, enumerable: true, configurable: true});})();</script>
+		<script src="./Basic Fantasy Role-Playing Game_files/prototype.js.download" type="text/javascript"></script>
+		<script src="./Basic Fantasy Role-Playing Game_files/scriptaculous.js.download" type="text/javascript"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/builder.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/effects.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/dragdrop.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/controls.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/slider.js.download"></script><script type="text/javascript" src="./Basic Fantasy Role-Playing Game_files/sound.js.download"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+		
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="https://basicfantasy.org/rss.xml">
+		<link rel="stylesheet" href="./normalize.css" type="text/css">
+		<link rel="stylesheet" href="./stylesheet.css" type="text/css">
+		<link rel="stylesheet" href="./base.css" type="text/css">
 		<link rel="stylesheet" href="./page.css">
-		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js">
-		</script>
+		<link rel="shortcut icon" href="https://www.basicfantasy.org/favicon.ico">
+
+		<style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style>
 	</head>
 	
 	<body>
+		<!-- Website header -->
+		<div id="topboxouter">
+		  <div id="topbox">
+			<span class="soutane" style="display: inline-block; text-align: center; font-size: 120%;">
+			<a href="https://www.basicfantasy.org/index.html">
+			<img border="0" src="./images/title-foreground.png"></a>
+			</span>
+
+			<div id="download-buttons">
+			<a href="https://www.basicfantasy.org/downloads.html" class="blue-shiny-button">
+			<strong>Download the Rules</strong><br>Free download in source
+			and PDF formats</a>
+
+			<br>
+			<a href="https://www.basicfantasy.org/buytherules.html" class="green-shiny-button" style="margin-top: 8px; margin-bottom: 8px;">
+			<strong>Buy the Rules</strong><br>Available in hard and soft
+			cover at cost</a>
+
+			<br>
+			<b>Core Rules 4thEd R137 -- September 13, 2023</b>
+			</div>
+		  </div>
+
+		  <div id="menubarframe">
+			<ul id="menubar">
+				<li><a href="https://www.basicfantasy.org/index.html" class="navbutton">Home</a></li>
+				<li><a href="https://www.basicfantasy.org/downloads.html" class="navbutton">Downloads</a></li>
+				<li><a href="https://www.basicfantasy.org/showcase.cgi" class="navbutton">Showcase</a></li>
+				<li><a href="https://www.basicfantasy.org/srd" class="navbutton">SRD</a></li>
+				<li><a href="https://www.basicfantasy.org/introstory.html" class="navbutton">Intro Story</a></li>
+				<li><a href="https://www.basicfantasy.org/news.html" class="navbutton">News</a></li>
+				<li><a href="https://www.basicfantasy.org/tools.html" class="navbutton">Tools</a></li>
+				<li><a href="https://www.basicfantasy.org/contact.html" class="navbutton">Contact Us</a></li>
+				<li><a href="https://www.basicfantasy.org/blog" class="navbutton">Blog</a></li>
+				<li><a href="https://www.basicfantasy.org/forums" class="navbutton">Forums</a></li>
+			</ul>
+		  </div>
+		</div>
+
 		<div class="header">
 			<div id="left">
-				<h3>The</h3>
-				<h1>Digital Emporium</h1>
+				<p>The <br>
+					Digital Emporium</p>
 			</div>
 			<div id="middle">
-				<img src="./images/dragon.png" id="dragon">
-				
-			</div>
-			<div id="right">
 				<img src="./images/emporium.png" id="emporium">
 			</div>
-		</div>
-		
-		<div class="storefront c">
-			<div class="instructions">
+			<div id="right">
 				<p>The Digital Emporium is intended as a tool to enhance the Very 
 					Well Done supplement "Equipment Emporium" by Joe Ludlum, R.Kevin
 					Smoot and Alan Vetter.</p>
-
-				<input type="checkbox" class="chkbox" id="core" name="core" onclick="core_only()">
-				<label class="chkbox" for="core"> Use only Core Rules </label><br>
+			</div>
+		</div>
+	
+		<div class="storefront c">
+			<div class="filters">
+				<hr>
+				<br>
+				<span><input type="checkbox" class="chkbox" id="core" name="core" onclick="core_only()">
+				<label class="chkbox" for="core"> Use only Core Rules </label></span>
+				<br>
+				<br>
+				<hr>
 			</div>
 
 			<div class="inv_instr">

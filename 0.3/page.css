@@ -9,6 +9,7 @@
 body {
 	margin: 0px;
 	background-color: lightgray;
+	
 }
 
 button {
@@ -27,7 +28,7 @@ hr {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	border: 0;
-	border-top: 3px solid black;
+	border-top: 5px solid black;
 }
 
 .inventory p,
@@ -49,16 +50,30 @@ hr {
 	float : left;
 }
 
+#left p {
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding: 0 0 0 10px;
+	text-align: left;
+	font-size: 55px;
+}
+
 #middle {
 	grid-area: middle;
-	margin: 0 0 0 0;
-	width: 100%;
+	margin: auto;
+
 }
 
 #right {
 	grid-area: right;
 	margin: 0 0 0 0;
 	width: 100%;
+}
+
+#right p {
+	padding: 0 10px 0 0;
 }
 
 #emporium {
@@ -78,14 +93,14 @@ hr {
 }
 
 .header {
-	width: 100%;
+	width: 90%;
 	padding: 0px 5px 0px 5px;
-	background-color: black;
-	color: white;
+	background-color: lightgray;
+	color: black;
 	justify-items: center;
 	align-items: center;
   	display: grid;
-	margin: 0px;
+	margin: 0px auto 0px auto;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-areas:
 		"left middle right";
@@ -104,17 +119,17 @@ hr {
 	display: grid;
 	grid-template-columns: 45% 5% 5% 45%;
 	grid-template-areas:
-		"instructions instructions instructions instructions"
-		" inv_instr     buttons      buttons     pur_instr  "
-		" inventory     buttons      buttons     purchases  "
-		"description  description    summary      summary   "
-		"   footer       footer       footer       footer   ";
+		"  filters      filters      filters      filters " 
+		" inv_instr     buttons      buttons     pur_instr"
+		" inventory     buttons      buttons     purchases"
+		"description  description    summary      summary "
+		"  footer       footer       footer       footer ";
 	grid-gap: 5px;
 }
 
-.instructions {
-	grid-area: instructions;
-	width: 80%;
+.filters {
+	grid-area: filters;
+	width: 100%;
 
 }
 
@@ -156,7 +171,6 @@ hr {
 	background-color: black;
 	color: white;
 	width: 100%;
-
 }
 
 /********************************************************************
