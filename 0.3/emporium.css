@@ -378,6 +378,56 @@ hr {
 }
 
 /********************************************************************
+* details_table stuff                                           *
+********************************************************************/
+.details_table {
+	width: 300px;
+	table-layout: fixed;
+	border: 2px solid black;
+	border-collapse: collapse;
+	column-gap: 0px;
+
+}
+
+.details_table thead {
+	background-color: black;
+	color: white;
+}
+
+.details_table tbody {
+	display: block;
+	background-color: white;
+	overflow: auto;
+	height: 200px;
+}
+
+.details_table th {
+	display: inline-block;
+	padding: 0px 0px 5px 0px;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+
+.details_table tbody tr {
+	background-color: white;
+	cursor: pointer;
+}
+
+.details_table td {
+	display: inline-block;
+	padding: 5px 5px 5px 5px;
+	background-color: white;
+	color: black;
+	text-align: left;
+}
+
+.details_table td pre, p {
+	padding: 0px 0px 0px 0px;
+	margin: 1px 1px 1px 1px;
+}
+
+/********************************************************************
 * item identifiers                                                  *
 ********************************************************************/
 
@@ -389,4 +439,8 @@ hr {
 }
 
 .cr {
+}
+
+.footer a, a:visited {
+	color: white;
 }
