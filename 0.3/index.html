@@ -10503,6 +10503,7 @@
 			$(".inventory_table tr").removeClass("selected");
 			$(".selection_table tr").removeClass("selected");
 			$("#tot_gold").html("0.0");
+			$("#tot_wt").html("0.0");
 			$("#details_title").html("");
 			$("#details_text").html("");
 			
@@ -10754,7 +10755,7 @@
 		function export_list(isCSV) {
 			// Get the checkbox
 			var check_box = document.getElementById("core");
-			var myWindow=window.open('');
+			var myWindow;
 			var expression;
 			var separator;
 			
@@ -10769,7 +10770,11 @@
 			} else {
 				expression = "#ee_selection tbody tr";
 			}
-
+			
+			//bail if there are no items to List
+			if ($(expression).not(".hidden").length == 0){return;}
+			
+			myWindow = window.open('');
 			$(expression).not(".hidden").each( function( index, element ){
 				myWindow.document.write(
 					$(this).find("td:first").text() + 
