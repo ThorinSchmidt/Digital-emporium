@@ -20,10 +20,6 @@ h2 {
 	margin: 3px 0px 1px 0px;
 }
 
-.summary h2 {
-	text-align: right;
-}
-
 hr {
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -164,6 +160,8 @@ hr {
 
 .summary {
 	grid-area: summary;
+	align-self: start;
+	display: table-cell;
 	width: 100%;
 }
 
