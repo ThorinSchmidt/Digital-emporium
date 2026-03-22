@@ -1,0 +1,444 @@
+:root {
+	--table-width: 450px;
+	--inv-name-cat-width: 258px; /* NO PADDING */
+	--inv-name-subcat-width: 248px; /* 10px PADDING */
+	--inv-name-width: 238px; /* 20px PADDING */
+}
+
+/*ELEMENTS*/
+body {
+	margin: 0px;
+	background-color: lightgray;
+	
+}
+
+button {
+	width: 6em;
+}
+
+h2 {
+	margin: 3px 0px 1px 0px;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 0;
+	border-top: 5px solid black;
+}
+
+.inventory p,
+.purchases p {
+	margin: 3px 0px 3px 0px;
+}
+
+.summary span{
+	display: inline-block;
+	width: 3em;
+	text-align: right;
+}
+
+/*IDs*/
+#left {
+	grid-area: left;
+	margin: 0 0 0 0;
+	width: 100%;
+	float : left;
+}
+
+#left p {
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding: 0 0 0 10px;
+	text-align: left;
+	font-size: 55px;
+}
+
+#middle {
+	grid-area: middle;
+	margin: auto;
+
+}
+
+#right {
+	grid-area: right;
+	margin: 0 0 0 0;
+	width: 100%;
+}
+
+#right p {
+	padding: 0 10px 0 0;
+}
+
+#emporium {
+	float: right;
+}
+/*CLASSES*/
+.c {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.l {
+	display: inline-block;
+	text-align: left;
+	margin-left: 5px;
+}
+
+.header {
+	width: 90%;
+	padding: 0px 5px 0px 5px;
+	background-color: lightgray;
+	color: black;
+	justify-items: center;
+	align-items: center;
+  	display: grid;
+	margin: 0px auto 0px auto;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"left middle right";
+	grid-gap: 0px;
+}
+
+
+
+.storefront {
+	clear: both;
+	border: 0;
+	color: black;
+	width: 90%;
+	justify-items: center;
+	align-items: center;
+	display: grid;
+	grid-template-columns: 45% 5% 5% 45%;
+	grid-template-areas:
+		"  filters      filters      filters      filters " 
+		" inv_instr     buttons      buttons     pur_instr"
+		" inventory     buttons      buttons     purchases"
+		"description  description    summary      summary "
+		"  footer       footer       footer       footer ";
+	grid-gap: 5px;
+}
+
+.filters {
+	grid-area: filters;
+	width: 100%;
+
+}
+
+.inventory {
+	grid-area: inventory;
+	width: 100%;
+}
+
+.inv_instr {
+	grid-area: inv_instr;
+	width: 90%;
+}
+
+.pur_instr {
+	grid-area: pur_instr;
+	width: 90%;
+}
+
+.description {
+	grid-area: description;
+	width: 100%;
+}
+
+.buttons {
+	grid-area: buttons;
+}
+
+.purchases {
+	grid-area: purchases;
+	width: 100%;
+}
+
+.summary {
+	grid-area: summary;
+	align-self: start;
+	display: table-cell;
+	width: 100%;
+}
+
+.footer {
+	background-color: black;
+	color: white;
+	width: 100%;
+}
+
+/********************************************************************
+* inventory_table stuff                                             *
+********************************************************************/
+.inventory_table {
+	width: var(--table-width);
+	table-layout: fixed;
+	border: 2px solid black;
+	border-collapse: collapse;
+	column-gap: 0px;
+
+}
+
+.inventory_table thead {
+	background: black;
+	color: white;
+}
+
+.inventory_table tbody {
+	display: block;
+	background-color: white;
+	overflow: auto;
+	height: 300px;
+}
+
+.inventory_table th {
+	display: inline-block;
+	padding: 0px 0px 5px 0px;
+	text-align: center;
+}
+
+.inventory_table tbody tr {
+	background-color: white;
+	cursor: pointer;
+}
+
+.inventory_table .first_th {
+	width: 308px;
+}
+
+.inventory_table .second_th,
+.inventory_table .third_th {
+	width: 49px;
+	text-align: center;
+}
+
+.inventory_table .spacer {
+	width: 14px;
+}
+.inventory_table td {
+	/*display: inline-block;*/
+	padding: 0px 0px 5px 0px;
+	background-color: white;
+	text-align: left;
+}
+
+.inventory_table tr.category td.first {
+	width: 308px;
+}
+
+.inventory_table tr.subcategory td.first {
+	width: 308px;
+	padding-left: 10px;
+}
+
+.inventory_table tr.item td.first {
+	width: 308px;
+	padding-left: 20px;
+}
+
+.inventory_table tr.subitem td.first {
+	width: 308px;
+	padding-left: 30px;
+}
+
+.inventory_table td.second,
+.inventory_table td.third {
+	width: 54px;
+	text-align: right;
+}
+
+.inventory_table td + td {
+	border-left:2px solid black;
+}
+
+.inventory_table .category,
+.inventory_table .category td {
+	background-color: gray; /*gray is darker than darkgray!!*/
+}
+
+.inventory_table .subcategory,
+.inventory_table .subcategory td {
+	background-color: darkgray; /*gray is darker than darkgray!!*/
+}
+
+.inventory_table .item,
+.inventory_table .item td {
+	background-color: white;
+}
+
+.inventory_table .selected,
+.inventory_table .selected td {
+    background-color: black;
+    color: yellow;
+}
+
+.inventory_table .test {
+	display: none;
+}
+
+/********************************************************************
+* selection_table stuff                                             *
+********************************************************************/
+.selection_table {
+	width: var(--table-width);
+	table-layout: fixed;
+	border: 2px solid black;
+	border-collapse: collapse;
+	column-gap: 0px;
+
+}
+
+.selection_table thead {
+	background: black;
+	color: white;
+}
+
+.selection_table tbody {
+	display: block;
+	background-color: white;
+	overflow: auto;
+	height: 300px;
+}
+
+.selection_table th {
+	display: inline-block;
+	padding: 0px 0px 5px 0px;
+	text-align: center;
+}
+
+.selection_table tbody tr {
+	background-color: white;
+	cursor: pointer;
+}
+
+.selection_table td {
+	display: inline-block;
+	padding: 0px 0px 5px 0px;
+	background-color: white;
+	text-align: left;
+}
+
+.selection_table .first {
+	width: 263px;
+}
+
+.selection_table .second {
+	width: 40px;
+	text-align: right;
+}	
+	
+.selection_table .third,
+.selection_table .fourth {
+	width: 54px;
+	text-align: right;
+}
+
+.selection_table .first_th {
+	width: 273px;
+}
+
+.selection_table .second_th {
+	width: 30px;
+}
+
+.selection_table .third_th,
+.selection_table .fourth_th {
+	width: 54px;
+	text-align: center;
+}
+
+.selection_table .spacer {
+	width: 14px;
+}
+
+.selection_table td + td {
+	border-left:2px solid black;
+}
+
+.selection_table .category,
+.selection_table .category td {
+	background-color: gray; /*gray is darker than darkgray!!*/
+}
+
+.selection_table .subcategory,
+.selection_table .subcategory td {
+	background-color: darkgray; /*gray is darker than darkgray!!*/
+}
+
+.selection_table .selected,
+.selection_table .selected td {
+    background-color: black;
+    color: yellow;
+}
+
+/********************************************************************
+* details_table stuff                                           *
+********************************************************************/
+.details_table {
+	width: 300px;
+	table-layout: fixed;
+	border: 2px solid black;
+	border-collapse: collapse;
+	column-gap: 0px;
+
+}
+
+.details_table thead {
+	background-color: black;
+	color: white;
+}
+
+.details_table tbody {
+	display: block;
+	background-color: white;
+	overflow: auto;
+	height: 200px;
+}
+
+.details_table th {
+	display: inline-block;
+	padding: 0px 0px 5px 0px;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+
+.details_table tbody tr {
+	background-color: white;
+	cursor: pointer;
+}
+
+.details_table td {
+	display: inline-block;
+	padding: 5px 5px 5px 5px;
+	background-color: white;
+	color: black;
+	text-align: left;
+}
+
+.details_table td pre, p {
+	padding: 0px 0px 0px 0px;
+	margin: 1px 1px 1px 1px;
+}
+
+/********************************************************************
+* item identifiers                                                  *
+********************************************************************/
+
+.hidden {
+	display: none;
+}
+
+.ee {
+}
+
+.cr {
+}
+
+.footer a, a:visited {
+	color: white;
+}
