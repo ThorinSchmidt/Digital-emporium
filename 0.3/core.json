@@ -1,0 +1,62 @@
+{
+	"entry_type"   : "category",
+	"column_1"     : "WEAPONS",
+	"column_2"     : " ",
+	"column_3"     : " ",
+	"description_1": null,
+	"description_2": null,
+	"description_3": null,
+	"description_4": null,
+	"description_5": null,
+	"description_6": null	
+}
+{
+	"entry_type"   : "subcategory",
+	"column_1"     : "AXES",
+	"column_2"     : " ",
+	"column_3"     : " ",
+	"description_1": null,
+	"description_2": null,
+	"description_3": null,
+	"description_4": null,
+	"description_5": null,
+	"description_6": null	
+}
+{
+	"entry_type"   : "item",
+	"column_1"     : "Hand Axe",
+	"column_2"     : "4",
+	"column_3"     : "5",
+	"description_1": "Price:  4gp",
+	"description_2": "Size:   S",
+	"description_3": "Weight: 5",
+	"description_4": "Damage: 1d6",
+	"description_5": "Range:  10/20/30",
+	"description_6": "A Hand Axe is a simple one-handed weapon. Often called a hatchet."
+}
+{
+	"entry_type"   : "item",
+	"column_1"     : "Battle Axe",
+	"column_2"     : "7",
+	"column_3"     : "7",
+	"description_1": "Price:  7gp",
+	"description_2": "Size:   M",
+	"description_3": "Weight: 7",
+	"description_4": "Damage: 1d8",
+	"description_5": "Range:  ---",
+	"description_6": "A battle Axe is a one-handed weapon larger than a simple hand axe, specialized for combat."	
+}
+
+{
+	"entry_type"   : "",
+	"column_1"     : "",
+	"column_2"     : "",
+	"column_3"     : "",
+	"description_1": "",
+	"description_2": "",
+	"description_3": "",
+	"description_4": "",
+	"description_5": "",
+	"description_6": ""	
+}	
+        
