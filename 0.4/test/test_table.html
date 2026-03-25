@@ -1,0 +1,32 @@
+<html>
+	<script
+	  src="https://code.jquery.com/jquery-4.0.0.js">
+	</script>
+	
+	<script type="text/javascript">
+		$.getJSON("core.json", function(data){
+			$.each(data.row, function(){
+				console.log(this['column_1']);
+				
+			});
+		});
+	</script>
+	<body>
+		<table id="inventory">
+			<tr>
+				<td>TYPE</td>
+				<td>COL 1</td>
+				<td>COL 2</td>
+				<td>COL 3</td>
+				<td>DESC 1</td>
+				<td>DESC 2</td>
+				<td>DESC 3</td>
+				<td>DESC 4</td>
+				<td>DESC 5</td>
+				<td>DESC 6</td>
+			</tr>
+				
+		</table>
+	</body>
+
+</html>
