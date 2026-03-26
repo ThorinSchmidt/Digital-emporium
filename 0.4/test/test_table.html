@@ -4,28 +4,40 @@
 	</script>
 	
 	<script type="text/javascript">
-		$.getJSON("core.json", function(data){
+		let file_name = "core.json";
+		$.getJSON(file_name, function(data){
+									
 			$.each(data.row, function(){
-				console.log(this['column_1']);
+				let item_type = this['type'];
+				//console.log(item_name);
+				let new_row = document.createElement("tr");
+				let name_cell = document.createElement("td");
+				name_cell.innerHTML = this['name'];
+				let cost_cell = document.createElement("td");
+				cost_cell.innerHTML = this['cost'];
+				let load_cell = document.createElement("td");
+				load_cell.innerHTML = this['load'];
+				new_row.append(name_cell);
+				new_row.append(cost_cell);
+				new_row.append(load_cell);
+				document.getElementById("rows").appendChild(new_row);
 				
 			});
 		});
 	</script>
 	<body>
 		<table id="inventory">
+		<thead>
 			<tr>
-				<td>TYPE</td>
-				<td>COL 1</td>
-				<td>COL 2</td>
-				<td>COL 3</td>
-				<td>DESC 1</td>
-				<td>DESC 2</td>
-				<td>DESC 3</td>
-				<td>DESC 4</td>
-				<td>DESC 5</td>
-				<td>DESC 6</td>
+				<th class="first_th"> Item Name </th>
+				<th class="second_th"> Gp </th>
+				<th class="third_th"> Load </th>
+				<th class="spacer">&nbsp;</th>
 			</tr>
-				
+		</thead>
+		<tbody id="rows">
+		
+		</body>
 		</table>
 	</body>
 
