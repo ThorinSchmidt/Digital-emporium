@@ -6,10 +6,11 @@
 	<script type="text/javascript">
 		let file_name = "core.json";
 		$.getJSON(file_name, function(data){
-									
-			$.each(data.row, function(){
+			var groups = ["1","2","3","4"];
+			
+			$.each(data.rows, function(){
 				let item_type = this['type'];
-				//console.log(item_name);
+				//console.log(groups[1]);
 				let new_row = document.createElement("tr");
 				let name_cell = document.createElement("td");
 				name_cell.innerHTML = this['name'];
