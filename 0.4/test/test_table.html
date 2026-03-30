@@ -14,14 +14,26 @@
 				let new_row = document.createElement("tr");
 				let name_cell = document.createElement("td");
 				name_cell.innerHTML = this['name'];
+				
 				let cost_cell = document.createElement("td");
 				cost_cell.innerHTML = this['cost'];
+				
 				let load_cell = document.createElement("td");
 				//load_cell.setAttribute("style", "font-weight: bold;");
 				load_cell.innerHTML = this['load'];
+				
+				let desc_cell = document.createElement("td");
+				var description = "";
+				this['text_5'].forEach((string_item) =>{
+					description += string_item;
+				});
+				//console.log(description);
+				desc_cell.innerHTML = description;
 				new_row.append(name_cell);
 				new_row.append(cost_cell);
 				new_row.append(load_cell);
+				new_row.append(desc_cell);
+				
 				document.getElementById("rows").appendChild(new_row);
 				
 			});
@@ -34,6 +46,7 @@
 				<th class="first_th"> Item Name </th>
 				<th class="second_th"> Gp </th>
 				<th class="third_th"> Load </th>
+				<th class="fourth_th"> Description </th>
 				<th class="spacer">&nbsp;</th>
 			</tr>
 		</thead>

@@ -1,5 +1,5 @@
 	{"type"   : "item",
-	 "group"  : "",
+	 "group"  : "1",
 	 "name"   : "",
 	 "cost"   : "",
 	 "load"   : "",
@@ -7,5 +7,5 @@
 	 "text_2" : "",
 	 "text_3" : "",
 	 "text_4" : "",
-	 "text_5" : ""
+	 "text_5" : [""]
 	},
