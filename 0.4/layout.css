@@ -1,0 +1,121 @@
+/********************************************************************
+* HEADER LAYOUT                                                     *
+********************************************************************/
+
+.header {
+	width: 90%;
+	padding: 0px 5px 0px 5px;
+	background-color: lightgray;
+	color: black;
+	justify-items: center;
+	align-items: center;
+  	display: grid;
+	margin: 0px auto 0px auto;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"left middle right";
+	grid-gap: 0px;
+}
+
+#left {
+	grid-area: left;
+	margin: 0 0 0 0;
+	width: 100%;
+	float : left;
+}
+
+#left p {
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding: 0 0 0 10px;
+	text-align: left;
+	font-size: 55px;
+}
+
+#middle {
+	grid-area: middle;
+	margin: auto;
+
+}
+
+#right {
+	grid-area: right;
+	margin: 0 0 0 0;
+	width: 100%;
+}
+
+#right p {
+	padding: 0 10px 0 0;
+}
+
+/********************************************************************
+* STOREFRONT LAYOUT                                                 *
+********************************************************************/
+
+.storefront {
+	clear: both;
+	border: 0;
+	color: black;
+	width: 90%;
+	justify-items: center;
+	align-items: center;
+	display: grid;
+	grid-template-columns: 45% 5% 5% 45%;
+	grid-template-areas:
+		"  filters      filters      filters      filters " 
+		" inv_instr     buttons      buttons     pur_instr"
+		" inventory     buttons      buttons     purchases"
+		"description  description    summary      summary "
+		"  footer       footer       footer       footer ";
+	grid-gap: 5px;
+}
+
+.filters {
+	grid-area: filters;
+	width: 100%;
+
+}
+
+.inventory {
+	grid-area: inventory;
+	width: 100%;
+}
+
+.inv_instr {
+	grid-area: inv_instr;
+	width: 90%;
+}
+
+.pur_instr {
+	grid-area: pur_instr;
+	width: 90%;
+}
+
+.description {
+	grid-area: description;
+	width: 100%;
+}
+
+.buttons {
+	grid-area: buttons;
+}
+
+.purchases {
+	grid-area: purchases;
+	width: 100%;
+}
+
+.summary {
+	grid-area: summary;
+	align-self: start;
+	display: table-cell;
+	width: 100%;
+}
+
+.footer {
+	background-color: black;
+	color: white;
+	width: 100%;
+}
