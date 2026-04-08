@@ -37,6 +37,10 @@ hr {
 	width: 3em;
 	text-align: right;
 }
+/* IDs */
+#cr_filters {
+  margin-top: 10px;
+}
 
 #emporium {
 	float: right;
@@ -66,7 +70,7 @@ hr {
   text-align: center;
   width: 11em;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -76,7 +80,7 @@ hr {
   text-align: center;
   width: 11em;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -88,7 +92,7 @@ hr {
   width: 5em;
   text-align: center;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -100,7 +104,7 @@ hr {
   width: 5em;
   text-align: center;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   cursor: pointer;
 }
 

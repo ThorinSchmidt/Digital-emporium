@@ -264,7 +264,6 @@
         <button class="toggle_btn_off" id="cr_tgl" name="cr_tgl" 
           onclick="choose_cr()">Core Rules Only</button>
 				<br>
-        <br>
         <table class="c hidden" id="cr_filters">
           <thead>
             <tr>
@@ -285,6 +284,28 @@
 				<br>
 				<hr>
 			</div>
+      
+      <div class="inv_instr">
+				<h2>Items for Sale</h2>
+				<p><b>Select an item below and click "Add Selected" (or "Bulk 
+					Add") once for each item you wish to purchase. It will 
+					appear in the Purchased Items list.</b></p>
+			</div>
+    
+      <div class="inventory">
+				<table class="inventory_table c">
+					<thead>
+						<tr>
+							<th class="first_th"> Item Name </th>
+							<th class="second_th"> Gp </th>
+							<th class="third_th"> Load </th>
+							<th class="spacer">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+          </body>
+        </table>
+      </div>
     
     </div>
 		
@@ -314,7 +335,21 @@
                          document.getElementById("cr_arm"),
                          document.getElementById("cr_beast")];
     var ee_filter_ary = [];
-        
+    var inventory_items = [];
+    
+    function fill_array(file_name) {
+      let det = "";
+
+      $.getJSON(file_name, function(data){
+        $.each(data.rows, function(){
+          inventory_items.push({group : this["group],
+                                name  : this["name"],
+                                cost  : this["cost"]});
+          console.log(inventory_items.length);
+        });
+      }); 
+    }
+    
     //Activate the emporium list
     function choose_ee() {
       let cr_button = document.getElementById("cr_tgl");
@@ -352,18 +387,61 @@
       console.log("clicked all");
       cr_all_on = !cr_all_on;
       console.log(cr_all_on);
-      
-      //all_btn = document.getElementById("cr_all");
-      //all_btn.classList.toggle("sm_toggle_on", cr_all_on);
-      //all_btn.classList.toggle("sm_toggle_off", !cr_all_on);
-      
-      //cr_filter_ary[1].classList.toggle("sm_toggle_on", cr_all_on);
-      //cr_filter_ary[1].classList.toggle("sm_toggle_off", !cr_all_on);
+     
       cr_filter_ary.forEach((button) => {
         button.classList.toggle("sm_toggle_on", cr_all_on);
         button.classList.toggle("sm_toggle_off", !cr_all_on);
       });
-    }  
+    }
+    
+    // toggle the equipment button, also turn off the All button
+    function cr_equip_clk() {
+      //turn off the all button
+      cr_all_on = false;
+      cr_filter_ary[0].classList.remove("sm_toggle_on");
+      cr_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the equip button
+      cr_filter_ary[1].classList.toggle("sm_toggle_on");
+      cr_filter_ary[1].classList.toggle("sm_toggle_off");
+    }
+    
+    // toggle the weapons button, also turn off the All button
+    function cr_weap_clk() {
+      //turn off the all button
+      cr_all_on = false;
+      cr_filter_ary[0].classList.remove("sm_toggle_on");
+      cr_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the weapons button
+      cr_filter_ary[2].classList.toggle("sm_toggle_on");
+      cr_filter_ary[2].classList.toggle("sm_toggle_off");
+    }
+    
+    // toggle the armor button, also turn off the All button
+    function cr_arm_clk() {
+      //turn off the all button
+      cr_all_on = false;
+      cr_filter_ary[0].classList.remove("sm_toggle_on");
+      cr_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the equip button
+      cr_filter_ary[3].classList.toggle("sm_toggle_on");
+      cr_filter_ary[3].classList.toggle("sm_toggle_off");
+    }
+    
+    // toggle the beasts of burden button, also turn off the All button
+    function cr_beast_clk() {
+      //turn off the all button
+      cr_all_on = false;
+      cr_filter_ary[0].classList.remove("sm_toggle_on");
+      cr_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the equip button
+      cr_filter_ary[4].classList.toggle("sm_toggle_on");
+      cr_filter_ary[4].classList.toggle("sm_toggle_off");
+    }
+    
   </script>
   
 </html>

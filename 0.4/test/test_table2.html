@@ -1,0 +1,70 @@
+<html>
+	<script
+	  src="https://code.jquery.com/jquery-4.0.0.js">
+	</script>
+	
+	<script type="text/javascript">
+		let file_name = "core.json";
+    var inventory = [];
+    
+    //fill_array(file_name);
+    console.log(inventory[0]);
+    
+    inventory = [{group : 1,
+                  name  : "sword",
+                  cost  : 10},
+                 {group : 2,
+                  name  : "Backpack",
+                  cost  : 5},];
+    console.log(inventory[0].name);
+    inventory.forEach((item) => {
+		  let new_row = document.createElement("tr");
+		  let name_cell = document.createElement("td");
+ 		  name_cell.innerHTML = item.name;
+      let cost_cell = document.createElement("td");
+			cost_cell.innerHTML = item.cost;
+			
+      //handle the final two cells here
+			
+      new_row.append(name_cell);
+			new_row.append(cost_cell);
+			
+      //new_row.append(load_cell);
+			//new_row.append(desc_cell);
+				
+			document.getElementById("rows").appendChild(new_row);
+				
+		});
+    
+    function fill_array(file_name) {
+      let det = "";
+
+      $.getJSON(file_name, function(data){
+        $.each(data.rows, function(){
+          inventory.push({group : this['group'],
+                          name  : this['name'],
+                          cost  : this['cost']});
+          //console.log(this['name']);
+        });
+      });
+      
+    }
+	</script>
+  
+	<body>
+		<table id="inventory">
+      <thead>
+        <tr>
+          <th class="first_th"> Item Name </th>
+          <th class="second_th"> Gp </th>
+          <th class="third_th"> Load </th>
+          <th class="fourth_th"> Description </th>
+          <th class="spacer">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody id="rows">
+      
+      </tbody>
+		</table>
+	</body>
+</html>
