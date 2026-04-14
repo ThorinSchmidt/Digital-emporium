@@ -40,6 +40,12 @@ hr {
 /* IDs */
 #cr_filters {
   margin-top: 10px;
+  height: 75px;
+}
+
+#ee_filters {
+  margin-top: 10px;
+  height: 75px;
 }
 
 #emporium {
@@ -90,6 +96,7 @@ hr {
   border: 2px solid black;
   padding: 3px;
   width: 5em;
+  height: 2em;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
@@ -102,6 +109,7 @@ hr {
   border: 2px solid black;
   padding: 3px;
   width: 5em;
+  height: 2em;
   text-align: center;
   text-decoration: none;
   font-size: 18px;

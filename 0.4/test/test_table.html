@@ -6,35 +6,62 @@
     </script>
     
     <script type="text/javascript">
-      let file_name = "core.json";
+      var file_name = "core.json";
+      var file_name2 = "ee.json";
+      
       var cr_inv = [];
       var ee_inv = [];
-      active_filters = [1, 3, 4];
+      var active_filters = [1, 2, 3, 4];
       
       //get JSON data and fill arrays
-      $.getJSON(file_name, function(data) {
-          $.each(data, function() {
-              cr_inv.push(this);
-          });
-        fill_table();  
-      });
+      console.log("Start JSON");
+      $.when(
+        $.getJSON(file_name, function(data) {
+            $.each(data, function() {
+                cr_inv.push(this);
+            });
+        }),
+        $.getJSON(file_name2, function(data) {
+            $.each(data, function() {
+                ee_inv.push(this);
+            });
+        })
+      ).then( function() {
+        if (cr_inv) {
+          console.log("CR array exists");
+        } else {
+          console.log("CR array NOT exist");
+        }
+        if (ee_inv) {
+          console.log("EE array exists");
+        } else {
+          console.log("EE array NOT exist");
+        }
         
+        fill_table(ee_inv);
+      
+      });
+          
       //construct the table
-      function fill_table() {
+      function fill_table(array) {
         let group;
-        cr_inv.forEach((item) => {
+        array.forEach((item) => {
           group = parseInt(item.group);
           if (active_filters.includes(group)){
             let new_row = document.createElement("tr");
+            
             let name_cell = document.createElement("td");
             name_cell.innerHTML = item.name;
+            
             let cost_cell = document.createElement("td");
             cost_cell.innerHTML = item.cost;
-            //handle the final two cells here
+            
+            let load_cell = document.createElement("td");
+            load_cell.innerHTML = item.load;
+            
             new_row.append(name_cell);
             new_row.append(cost_cell);
-            //new_row.append(load_cell);
-            //new_row.append(desc_cell);
+            new_row.append(load_cell);
             document.getElementById("rows").appendChild(new_row);
           }
         });

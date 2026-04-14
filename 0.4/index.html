@@ -263,24 +263,53 @@
           onclick="choose_ee()">Equipment Emporium</button>
         <button class="toggle_btn_off" id="cr_tgl" name="cr_tgl" 
           onclick="choose_cr()">Core Rules Only</button>
-				<br>
+
         <table class="c hidden" id="cr_filters">
-          <thead>
+          <tbody>
             <tr>
-              <th class="sm_toggle_on" id="cr_all" 
-                onclick="cr_all_clk()">All</th>
-              <th class="sm_toggle_on" id="cr_equip" 
-                onclick="cr_equip_clk()">Equipment</th>
-              <th class="sm_toggle_on" id="cr_weap" 
-                onclick="cr_weap_clk()">Weapons</th>
-              <th class="sm_toggle_on" id="cr_arm" 
-                onclick="cr_arm_clk()">Armor</th>
-              <th class="sm_toggle_on" id="cr_beast" 
-                onclick="cr_beast_clk()">Beasts of Burden</th>
-              
+              <td class="sm_toggle_on" id="cr_all" 
+                onclick="cr_all_clk()">All</td>
+              <td class="sm_toggle_on" id="cr_equip" 
+                onclick="cr_equip_clk()">Equipment</td>
+              <td class="sm_toggle_on" id="cr_weap" 
+                onclick="cr_weap_clk()">Weapons</td>
+              <td class="sm_toggle_on" id="cr_arm" 
+                onclick="cr_arm_clk()">Armor & Shields</td>
+              <td class="sm_toggle_on" id="cr_beast" 
+                onclick="cr_beast_clk()">Beasts of Burden</td>  
             </tr>
-          </thead>
+          </tbody>
         </table>
+        
+        <table class="c" id="ee_filters">
+          <tbody>
+            <tr>
+              <td class="sm_toggle_on" id="ee_all" 
+                onclick="ee_all_clk()">All</td>
+              <td class="sm_toggle_on" id="ee_weap" 
+                onclick="ee_weap_clk()">Weapons</td>
+              <td class="sm_toggle_on" id="ee_arm" 
+                onclick="ee_arm_clk()">Armor</td>
+              <td class="sm_toggle_on" id="ee_equip" 
+                onclick="ee_equip_clk()">Equipment</td>
+              <td class="sm_toggle_on" id="ee_cloth" 
+                onclick="ee_cloth_clk()">Clothing</td>  
+            </tr>
+            <tr>
+              <td class="sm_toggle_on" id="ee_stor" 
+                onclick="ee_stor_clk()">Storage</td>
+              <td class="sm_toggle_on" id="ee_anim" 
+                onclick="ee_anim_clk()">Animals</td>
+              <td class="sm_toggle_on" id="ee_serv" 
+                onclick="ee_serv_clk()">Services</td>
+              <td class="sm_toggle_on" id="ee_stock" 
+                onclick="ee_stock_clk()">Stock</td>
+              <td class="sm_toggle_on" id="ee_veh" 
+                onclick="ee_veh_clk()">Vehicles</td>  
+            </tr>
+          </tbody>
+        </table>
+				
 				<br>
 				<hr>
 			</div>
@@ -302,7 +331,7 @@
 							<th class="spacer">&nbsp;</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="rows">
           </body>
         </table>
       </div>
@@ -334,46 +363,86 @@
                          document.getElementById("cr_weap"),
                          document.getElementById("cr_arm"),
                          document.getElementById("cr_beast")];
-    var ee_filter_ary = [];
-    var inventory_items = [];
+                         
+    var ee_filter_ary = [document.getElementById("ee_all"),
+                         document.getElementById("ee_weap"),
+                         document.getElementById("ee_arm"),
+                         document.getElementById("ee_equip"),
+                         document.getElementById("ee_cloth"),
+                         document.getElementById("ee_stor"),
+                         document.getElementById("ee_anim"),
+                         document.getElementById("ee_serv"),
+                         document.getElementById("ee_stock"),
+                         document.getElementById("ee_veh"),
+                         ];
+    var cr_inv = [];
+    var ee_inv =[];
+    var cr_active_filters = [1, 2, 3, 4];
+    var ee_active_filters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     
-    function fill_array(file_name) {
-      let det = "";
-
-      $.getJSON(file_name, function(data){
-        $.each(data.rows, function(){
-          inventory_items.push({group : this["group],
-                                name  : this["name"],
-                                cost  : this["cost"]});
-          console.log(inventory_items.length);
+    $.when(
+      $.getJSON("core.json", function(data) {
+        $.each(data, function() {
+            cr_inv.push(this);
         });
-      }); 
-    }
-    
-    //Activate the emporium list
-    function choose_ee() {
-      let cr_button = document.getElementById("cr_tgl");
-      let ee_button = document.getElementById("ee_tgl");
-      let core_filters = document.getElementById("cr_filters");
+        console.log("CR", cr_inv.length);
+        //fill_table(cr_inv, cr_active_filters);
+      }),
+      $.getJSON("ee.json", function(data) {
+        $.each(data, function() {
+            ee_inv.push(this);
+        });
+        console.log("EE", ee_inv.length);
+      })
+    ).then( function() {
+      if (cr_inv) {
+          console.log("CR array exists");
+        } else {
+          console.log("CR array NOT exist");
+        }
+        if (ee_inv) {
+          console.log("EE array exists");
+        } else {
+          console.log("EE array NOT exist");
+        }
+        
+      fill_table(ee_inv, ee_active_filters);
+    });
       
-      use_core = false;
-      console.log('clicked EE');
-      console.log(use_core);
-      ee_button.classList.add("toggle_btn_on");
-      ee_button.classList.remove("toggle_btn_off");
-      cr_button.classList.add("toggle_btn_off");
-      cr_button.classList.remove("toggle_btn_on");
-      core_filters.classList.add("hidden");
-    
+    function fill_table(inv_ary, filter_ary) {
+      let group;
+      document.getElementById("rows").innerHTML = "";
+      inv_ary.forEach((item) => {
+        group = parseInt(item.group);
+        if (filter_ary.includes(group)){
+          let new_row = document.createElement("tr");
+          
+          let name_cell = document.createElement("td");
+          name_cell.innerHTML = item.name;
+          
+          let cost_cell = document.createElement("td");
+          cost_cell.innerHTML = item.cost;
+          
+          let load_cell = document.createElement("td");
+          load_cell.innerHTML = item.load;
+          
+          new_row.append(name_cell);
+          new_row.append(cost_cell);
+          new_row.append(load_cell);
+          document.getElementById("rows").appendChild(new_row);
+        }
+      });
     }
-    
+        
     //Activate the core list
     function choose_cr() {
       let cr_button = document.getElementById("cr_tgl");
       let ee_button = document.getElementById("ee_tgl");
       let core_filters = document.getElementById("cr_filters");
+      let ee_filters = document.getElementById("ee_filters");
       
       use_core = true;
+      cr_all_on = true;
       console.log('clicked CR');
       console.log(use_core);
       ee_button.classList.add("toggle_btn_off");
@@ -381,17 +450,27 @@
       cr_button.classList.add("toggle_btn_on");
       cr_button.classList.remove("toggle_btn_off");
       core_filters.classList.remove("hidden");
+      ee_filters.classList.add("hidden");
+      cr_all_on = false;
+      cr_all_clk();
+      fill_table(cr_inv, cr_active_filters);
     }
+
     //toggle the "all" filter for core
     function cr_all_clk(){
       console.log("clicked all");
       cr_all_on = !cr_all_on;
       console.log(cr_all_on);
-     
+      if (cr_all_on){
+        cr_active_filters = [1, 2, 3, 4];
+      } else {
+        cr_active_filters = [];
+      }
       cr_filter_ary.forEach((button) => {
         button.classList.toggle("sm_toggle_on", cr_all_on);
         button.classList.toggle("sm_toggle_off", !cr_all_on);
       });
+      fill_table(cr_inv, cr_active_filters);
     }
     
     // toggle the equipment button, also turn off the All button
@@ -404,6 +483,16 @@
       //toggle the equip button
       cr_filter_ary[1].classList.toggle("sm_toggle_on");
       cr_filter_ary[1].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = cr_active_filters.indexOf(1);
+      if (i > -1) {
+        cr_active_filters.splice(i, 1);
+      } else {
+        cr_active_filters.splice(0, 0, 1)
+      }
+      console.log(cr_active_filters);
+      fill_table(cr_inv, cr_active_filters);
     }
     
     // toggle the weapons button, also turn off the All button
@@ -416,6 +505,16 @@
       //toggle the weapons button
       cr_filter_ary[2].classList.toggle("sm_toggle_on");
       cr_filter_ary[2].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = cr_active_filters.indexOf(2);
+      if (i > -1) {
+        cr_active_filters.splice(i, 1);
+      } else {
+        cr_active_filters.splice(1, 0, 2)
+      }
+      console.log(cr_active_filters);
+      fill_table(cr_inv, cr_active_filters);
     }
     
     // toggle the armor button, also turn off the All button
@@ -428,9 +527,19 @@
       //toggle the equip button
       cr_filter_ary[3].classList.toggle("sm_toggle_on");
       cr_filter_ary[3].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = cr_active_filters.indexOf(3);
+      if (i > -1) {
+        cr_active_filters.splice(i, 1);
+      } else {
+        cr_active_filters.splice(2, 0, 3)
+      }
+      console.log(cr_active_filters);
+      fill_table(cr_inv, cr_active_filters);
     }
     
-    // toggle the beasts of burden button, also turn off the All button
+    // toggle the BoB button, also turn off the All button
     function cr_beast_clk() {
       //turn off the all button
       cr_all_on = false;
@@ -440,8 +549,257 @@
       //toggle the equip button
       cr_filter_ary[4].classList.toggle("sm_toggle_on");
       cr_filter_ary[4].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = cr_active_filters.indexOf(4);
+      if (i > -1) {
+        cr_active_filters.splice(i, 1);
+      } else {
+        cr_active_filters.splice(3, 0, 4)
+      }
+      console.log(cr_active_filters);
+      fill_table(cr_inv, cr_active_filters);
     }
+
+    //Activate the emporium list
+    function choose_ee() {
+      let cr_button = document.getElementById("cr_tgl");
+      let ee_button = document.getElementById("ee_tgl");
+      let core_filters = document.getElementById("cr_filters");
+      let ee_filters = document.getElementById("ee_filters");
+      
+      use_core = false;
+      console.log('clicked EE');
+      console.log(use_core);
+      ee_all_on = true;
+      ee_button.classList.add("toggle_btn_on");
+      ee_button.classList.remove("toggle_btn_off");
+      cr_button.classList.add("toggle_btn_off");
+      cr_button.classList.remove("toggle_btn_on");
+      ee_filters.classList.remove("hidden");
+      core_filters.classList.add("hidden");
+      ee_active_filters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      ee_all_on = false;
+      ee_all_clk();
+      fill_table(ee_inv, ee_active_filters);
     
+    }
+
+    //toggle the "all" filter for EE
+    function ee_all_clk(){
+      console.log("clicked EE all");
+      ee_all_on = !ee_all_on;
+      console.log(ee_all_on);
+      if (ee_all_on){
+        ee_active_filters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      } else {
+        ee_active_filters = [];
+      }
+      ee_filter_ary.forEach((button) => {
+        button.classList.toggle("sm_toggle_on", ee_all_on);
+        button.classList.toggle("sm_toggle_off", !ee_all_on);
+      });
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE weap button, also turn off the All button
+    function ee_weap_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the equip button
+      ee_filter_ary[1].classList.toggle("sm_toggle_on");
+      ee_filter_ary[1].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(1);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(0, 0, 1)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE arm button, also turn off the All button
+    function ee_arm_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the arm button
+      ee_filter_ary[2].classList.toggle("sm_toggle_on");
+      ee_filter_ary[2].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(2);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(1, 0, 2)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE equip button, also turn off the All button
+    function ee_equip_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the equip button
+      ee_filter_ary[3].classList.toggle("sm_toggle_on");
+      ee_filter_ary[3].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(3);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(2, 0, 3)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE cloth button, also turn off the All button
+    function ee_cloth_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the cloth button
+      ee_filter_ary[4].classList.toggle("sm_toggle_on");
+      ee_filter_ary[4].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(4);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(3, 0, 4)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE stor button, also turn off the All button
+    function ee_stor_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the stor button
+      ee_filter_ary[5].classList.toggle("sm_toggle_on");
+      ee_filter_ary[5].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(5);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(4, 0, 5)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE anim button, also turn off the All button
+    function ee_anim_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the anim button
+      ee_filter_ary[6].classList.toggle("sm_toggle_on");
+      ee_filter_ary[6].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(6);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(5, 0, 6)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE serv button, also turn off the All button
+    function ee_serv_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the serv button
+      ee_filter_ary[7].classList.toggle("sm_toggle_on");
+      ee_filter_ary[7].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(7);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(6, 0, 7)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE stock button, also turn off the All button
+    function ee_stock_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the stock button
+      ee_filter_ary[8].classList.toggle("sm_toggle_on");
+      ee_filter_ary[8].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(8);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(7, 0, 8)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+
+    // toggle the EE veh button, also turn off the All button
+    function ee_veh_clk() {
+      //turn off the all button
+      ee_all_on = false;
+      ee_filter_ary[0].classList.remove("sm_toggle_on");
+      ee_filter_ary[0].classList.add("sm_toggle_off");
+      
+      //toggle the veh button
+      ee_filter_ary[9].classList.toggle("sm_toggle_on");
+      ee_filter_ary[9].classList.toggle("sm_toggle_off");
+      
+      //set the active filters to reflect the button
+      const i = ee_active_filters.indexOf(9);
+      if (i > -1) {
+        ee_active_filters.splice(i, 1);
+      } else {
+        ee_active_filters.splice(8, 0, 9)
+      }
+      console.log(ee_active_filters);
+      fill_table(ee_inv, ee_active_filters);
+    }
+   
   </script>
   
 </html>
