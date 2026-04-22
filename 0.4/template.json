@@ -1,12 +1,11 @@
+,
 	{"type"  : "item",
-	 "group" : "1",
+	 "group" : "3",
 	 "name"  : "",
 	 "cost"  : "",
 	 "load"  : "",
-	 "desc"  : ["Price : <br>",
-	            "Size  : <br>",
+	 "desc"  : ["Price : gp<br>",
 	            "Weight: <br>",
-	            "Damage: <br>",
 	            "<hr>",
               ""]
-	},
+	}

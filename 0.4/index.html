@@ -336,6 +336,21 @@
         </table>
       </div>
     
+			<div class="description c">
+				<table class="details_table c">
+					<thead>
+						<tr>
+							<th id="details_title">Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td id="details_text">Details of your selection will appear here.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
     </div>
 		
 		<div class="footer">
@@ -416,14 +431,19 @@
         group = parseInt(item.group);
         if (filter_ary.includes(group)){
           let new_row = document.createElement("tr");
-          
+          //assign classes based on type field
+          new_row.classList.add(item.type);
+
           let name_cell = document.createElement("td");
+          name_cell.classList.add("first");
           name_cell.innerHTML = item.name;
           
           let cost_cell = document.createElement("td");
+          cost_cell.classList.add("second");
           cost_cell.innerHTML = item.cost;
           
           let load_cell = document.createElement("td");
+          load_cell.classList.add("third");
           load_cell.innerHTML = item.load;
           
           new_row.append(name_cell);
