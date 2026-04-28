@@ -1,0 +1,18 @@
+EE Errata
+-------------
+pg 12 - The listing for Wax, beeswax makes no sense given that
+        there is no other type of wax available. It should just be beeswax.
+pg 13 - manylistings are inconsistent. some use "," and some
+        use "()".
+pg 14 - Coal Keeper paragraph is missing a period.
+pg 14 - Hooded and Bullseye lantern parapgraphs are inconsistent
+pg 14 - Magnifying Glass is possibly hard to find as part of
+        Lens.
+pg 14 - The paragraph for paper describes "High Quality" paper,
+        but the listing uses "Fine" Paper.
+pg 14 - writeups should use either "/" or "or" consistently, not
+        both.
+pg 14 - Cord writeup mentions attaching to an arm twice, in
+        consecutive sentences.
+pg 14 - Hemp rope writeup: One or more knots CUTS the strength
+        in half. Knots isn't the subject, One is.

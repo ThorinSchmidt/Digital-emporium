@@ -13,7 +13,7 @@ body {
 }
 
 button {
-	width: 6em;
+	width: 12em;
 }
 
 h2 {
@@ -51,6 +51,18 @@ hr {
 #emporium {
 	float: right;
 }
+
+#add,
+#bulk_add,
+#remove,
+#bulk_remove {
+  width: 40%;
+}
+
+#clear {
+  width: 80%;
+}
+
 /*CLASSES*/
 .c {
 	text-align: center;

@@ -322,7 +322,7 @@
 			</div>
     
       <div class="inventory">
-				<table class="inventory_table c">
+        <table class="inventory_table c">
 					<thead>
 						<tr>
 							<th class="first_th"> Item Name </th>
@@ -331,25 +331,78 @@
 							<th class="spacer">&nbsp;</th>
 						</tr>
 					</thead>
-					<tbody id="rows">
+					<tbody id="sale_items">
           </body>
         </table>
+        
+        <button id="add" onclick="add()">(A)dd Selected</button>
+        <button id="bulk_add" onclick="bulk_add()">(B)ulk Add 
+					</button>
+          
       </div>
     
-			<div class="description c">
-				<table class="details_table c">
+      <div class="description c">
+        <table class="details_table c">
+          <thead>
+            <tr>
+              <th id="details_title">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="details_text">Details of your selection will appear here.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="buttons">
+				<p> You can use keyboard shortcuts.</p>
+				<p class="l">a = Add <br>
+				   r = Remove <br>
+				   c = Clear <br>
+				   b = Bulk Add <br>
+				   / Remove <br>
+				</p>
+        
+        <hr>
+				<button id="export_full" onclick="export_list(false)">Export 
+					As List </button>
+				<button id="export_simple" onclick="export_list(true)">Export 
+					As CSV </button>
+			</div>
+			
+      <div class="pur_instr">
+				<h2>Shopping Basket</h2>
+				
+				<p>To remove an item, select it in this table, and click
+					"Remove Selected" (or "Bulk Remove"). To start over, click
+					"Clear All Selections." Cumulative totals will appear 
+					below.</p>
+			</div>
+      
+      <div class="purchases">
+				<table class="selection_table c" id="cr_selection">
 					<thead>
 						<tr>
-							<th id="details_title">Details</th>
+							<th class="first_th"> Item Name </th>
+							<th class="second_th"> Qty </th>
+							<th class="third_th"> Gp </th>
+							<th class="fourth_th"> Load </th>
+							<th class="spacer">&nbsp;</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td id="details_text">Details of your selection will appear here.</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+					<tbody id="selections">
+          </tbody>
+        </table>
+        
+				<button id="remove" onclick="remove()">(R)emove Selected</button>
+				<button id="bulk_remove" onclick="bulk_remove()">(B)ulk Remove
+					</button>
+				<button id="clear" onclick="clear_selections()">
+					(C)lear All Selections</button>
+        
+      </div>
 
     </div>
 		
@@ -368,11 +421,15 @@
 	</body>	
 
   <script>
+    /* single/double click example to allow both on same DOM Object https://stackoverflow.com/questions/880608/prevent-click-event-from-firing-when-dblclick-event-fires/11057483#11057483
+    */
   
     //Globals
     var use_core = false;
     var cr_all_on = true;
     var ee_all_on = true;
+    var inventory_is_selected = false;
+    var basket_is_selected = false;
     var cr_filter_ary = [document.getElementById("cr_all"),
                          document.getElementById("cr_equip"),
                          document.getElementById("cr_weap"),
@@ -391,7 +448,8 @@
                          document.getElementById("ee_veh"),
                          ];
     var cr_inv = [];
-    var ee_inv =[];
+    var ee_inv = [];
+    var sel_inv = [];
     var cr_active_filters = [1, 2, 3, 4];
     var ee_active_filters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     
@@ -426,13 +484,15 @@
       
     function fill_table(inv_ary, filter_ary) {
       let group;
-      document.getElementById("rows").innerHTML = "";
+      document.getElementById("sale_items").innerHTML = "";
       inv_ary.forEach((item) => {
         group = parseInt(item.group);
         if (filter_ary.includes(group)){
           let new_row = document.createElement("tr");
           //assign classes based on type field
           new_row.classList.add(item.type);
+          new_row.classList.add("inv_item");
+          
 
           let name_cell = document.createElement("td");
           name_cell.classList.add("first");
@@ -449,8 +509,40 @@
           new_row.append(name_cell);
           new_row.append(cost_cell);
           new_row.append(load_cell);
-          document.getElementById("rows").appendChild(new_row);
+          document.getElementById("sale_items").appendChild(new_row);
         }
+      });
+    }
+    
+    //fill the Purchases table
+    function fill_purchases(){
+      console.log("fill purchases");
+      document.getElementById("selections").innerHTML = "";
+      sel_inv.forEach((item) => {
+        let name_cell = document.createElement("td");
+        name_cell.classList.add("first");
+        name_cell.innerHTML = item.name;
+        
+        let qty_cell = document.createElement("td");
+        qty_cell.classList.add("second");
+        qty_cell.innerHTML = item.quantity;
+        
+        let cost_cell = document.createElement("td");
+        cost_cell.classList.add("third");
+        cost_cell.innerHTML = item.total_cost;
+        
+        let load_cell = document.createElement("td");
+        load_cell.classList.add("fourth");
+        load_cell.innerHTML = item.total_load;
+        
+        let new_row = document.createElement("tr");
+        new_row.classList.add("inv_item");
+        new_row.append(name_cell);
+        new_row.append(qty_cell);
+        new_row.append(cost_cell);
+        new_row.append(load_cell);
+        
+        document.getElementById("selections").appendChild(new_row);
       });
     }
         
@@ -819,7 +911,90 @@
       console.log(ee_active_filters);
       fill_table(ee_inv, ee_active_filters);
     }
-   
+
+    // Highlight selected item in inventory table
+    //and show details in the details table    
+		$(".inventory_table tbody").on("click" , "tr", function(){
+			var inv_row;
+			var sel_row;
+			var item_name;
+			var item_details;
+
+			//bail if the clicked row is a "category" row
+			let test = $(this).find('td:nth-child(2)').html();
+			if (isNaN(parseFloat(test))){
+				return;
+			}
+			
+      msg = $(this).find('td:first').html();
+      console.log(msg);
+			
+      $(this).addClass('selected').siblings().removeClass('selected');
+			item_name = $(this).find('td:first').html();
+			item_name = item_name.trim();
+			if(use_core) {
+        item_details = get_details(item_name, cr_inv);
+      } else {
+        item_details = get_details(item_name, ee_inv);
+      }
+      
+			$("#details_title").html(item_name);
+			$("#details_text").html(item_details);
+			//$(".selection_table .selected").removeClass('selected');
+			
+			inventory_is_selected = true;
+			basket_is_selected = false;
+
+    });
+
+    function get_details(name, the_array){
+      let index_of_item = the_array.findIndex(e => e.name === name);
+      
+      return the_array[index_of_item].desc;
+    }
+    
+    function add(inc = 1) {
+      let increment = parseInt(inc);
+			let inv_row;
+      let item_name;
+      
+			//acquire row data through queries
+			if(inventory_is_selected) {
+        console.log("preparing to add");
+				inv_row = $(".inventory_table .selected");
+        item_name = $(inv_row).find('td:first').html();
+        item_name = item_name.trim();
+        if(sel_inv.findIndex(e => e.name === item_name) > -1) {
+          //add_existing(inv_row, increment);
+          add_new(inv_row, increment);
+        } else {
+          add_new(inv_row, increment);
+        }
+			  fill_purchases();
+			}	
+    }
+
+    function add_new(inv_row, inc = 1) {
+    	let item_name = $(inv_row).find('td:first').html();
+			let item_cost = parseInt($(inv_row).find('td:nth-child(2)').html());
+			let item_weight =  parseInt($(inv_row).find('td:nth-child(3)').html());
+			let item_qty = inc;
+			let item_tot_cost = item_cost * inc;
+			let item_tot_wt = item_weight * inc;
+      let element;
+      
+      item_name = item_name.trim();
+      element = {name : item_name,
+                 quantity : item_qty,
+                 total_cost : item_tot_cost,
+                 total_load : item_tot_wt};
+      sel_inv.push(element);
+    }
+    
+    function add_existing(inv_row, inc = 1) {
+    
+    }
+    
   </script>
   
 </html>
